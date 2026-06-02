@@ -2,8 +2,8 @@ import streamlit as st
 from pathlib import Path
 
 st.set_page_config(
-    page_title="অধিরাজের বাংলা অ্যাডভেঞ্চার",
-    page_icon="📚",
+    page_title="অধিরাজের ক্লাস ৩",
+    page_icon="🎓",
     layout="wide",
 )
 
@@ -15,6 +15,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-html_path = Path(__file__).parent / "data" / "bengali_app.html"
+html_path = Path(__file__).parent / "data" / "main_app.html"
 html_content = html_path.read_text(encoding="utf-8")
-st.components.v1.html(html_content, height=860, scrolling=True)
+st.components.v1.html(html_content, height=880, scrolling=True)

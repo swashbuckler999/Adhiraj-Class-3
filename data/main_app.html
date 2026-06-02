@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="space" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adhiraj — Class 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Bengali:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Lora:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════
+   THEME VARIABLE SETS
+══════════════════════════════════════════ */
+[data-theme="space"]{
+  --bg:#07061a;--card:#13113a;--card2:#1c1950;
+  --a1:#f6c90e;--a2:#a29bfe;--a3:#4ecdc4;--a1d:#ffaa00;
+  --border:rgba(162,155,254,.18);
+  --text:#fff;--text2:#c8c3ff;--text3:#7b76b5;
+  --ok:#66bb6a;--ng:#ef5350;
+  --hdr-bg:rgba(7,6,26,.96);
+  --nav-bg:rgba(14,12,46,.97);
+  --hero:linear-gradient(135deg,#1a0a4a,#0a1a4a,#0a3a2a);
+  --card-top:linear-gradient(90deg,var(--a2),var(--a3),var(--a1));
+  --xp-grad:linear-gradient(90deg,#a29bfe,#4ecdc4,#f6c90e);
+  --chip-bg:#1c1950;
+  --heading-font:'Fredoka One',sans-serif;
+}
+[data-theme="maths"]{
+  --bg:#0D1B2A;--card:#162032;--card2:#1E2E42;
+  --a1:#FFD600;--a2:#4FC3F7;--a3:#66BB6A;--a1d:#FF8F00;
+  --border:rgba(79,195,247,.2);
+  --text:#E8F4FD;--text2:#B0D4E8;--text3:#7A9BB5;
+  --ok:#66BB6A;--ng:#EF5350;
+  --hdr-bg:linear-gradient(135deg,#1565C0,#0D47A1,#1A237E);
+  --nav-bg:#162032;
+  --hero:linear-gradient(135deg,#1565C0,#6A1B9A);
+  --card-top:linear-gradient(90deg,#1565C0,var(--a2));
+  --xp-grad:linear-gradient(90deg,#FFD600,#FF7043);
+  --chip-bg:rgba(255,255,255,.13);
+  --heading-font:'Fredoka One',sans-serif;
+}
+[data-theme="english"]{
+  --bg:#07061a;--card:#13113a;--card2:#1c1950;
+  --a1:#f6c90e;--a2:#ff6b6b;--a3:#a29bfe;--a1d:#fd79a8;
+  --border:rgba(246,201,14,.15);
+  --text:#fff;--text2:#ffe8e8;--text3:#9b8888;
+  --ok:#55efc4;--ng:#ff6b6b;
+  --hdr-bg:rgba(7,6,26,.96);
+  --nav-bg:rgba(14,12,46,.97);
+  --hero:linear-gradient(135deg,#2d1069,#1a0a50,#40084a);
+  --card-top:linear-gradient(90deg,#a29bfe,#ff6b6b,#f6c90e,#fd79a8);
+  --xp-grad:linear-gradient(90deg,#a29bfe,#ff6b6b,#f6c90e);
+  --chip-bg:#1c1950;
+  --heading-font:'Fredoka One',sans-serif;
+}
+[data-theme="history"]{
+  --bg:#0e0800;--card:rgba(38,17,3,.9);--card2:#261503;
+  --a1:#d4a017;--a2:#2a9d8f;--a3:#c87941;--a1d:#f0c040;
+  --border:rgba(212,160,23,.22);
+  --text:#f0ddb8;--text2:#d4c4a0;--text3:#9a7d5a;
+  --ok:#4caf50;--ng:#e53935;
+  --hdr-bg:rgba(14,8,0,.94);
+  --nav-bg:rgba(14,8,0,.96);
+  --hero:linear-gradient(135deg,#2a1000,#1a0800,#0a2020);
+  --card-top:linear-gradient(90deg,#d4a017,#c87941,#2a9d8f);
+  --xp-grad:linear-gradient(90deg,#2a9d8f,#d4a017);
+  --chip-bg:rgba(212,160,23,.12);
+  --heading-font:'Playfair Display',serif;
+}
+[data-theme="universe"]{
+  --bg:#050d1f;--card:rgba(14,42,92,.72);--card2:#0f2050;
+  --a1:#ffd700;--a2:#4fc3f7;--a3:#00d4aa;--a1d:#ff8c00;
+  --border:rgba(255,215,0,.15);
+  --text:#e8f4fd;--text2:#b0d4e8;--text3:#8ab4d4;
+  --ok:#00e676;--ng:#ff5252;
+  --hdr-bg:rgba(5,13,31,.92);
+  --nav-bg:rgba(5,13,31,.9);
+  --hero:radial-gradient(ellipse at center,#0a1a3a 0%,#050d1f 100%);
+  --card-top:linear-gradient(90deg,#ffd700,#00d4aa,#4fc3f7);
+  --xp-grad:linear-gradient(90deg,#00d4aa,#ffd700);
+  --chip-bg:rgba(14,42,92,.7);
+  --heading-font:'Fredoka One',sans-serif;
+}
+
+/* ══════════════════════════════════════════
+   BASE
+══════════════════════════════════════════ */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{scroll-behavior:smooth}
+body{font-family:'Noto Sans Bengali','Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;transition:background .35s,color .3s}
+
+/* Star dots (space/english/bengali themes) */
+body::before{content:'';position:fixed;inset:0;background:
+  radial-gradient(1px 1px at 12% 18%,rgba(255,255,255,.55),transparent),
+  radial-gradient(1px 1px at 34% 7%,rgba(255,255,255,.4),transparent),
+  radial-gradient(1px 1px at 58% 22%,rgba(255,255,255,.5),transparent),
+  radial-gradient(1px 1px at 78% 12%,rgba(255,255,255,.35),transparent),
+  radial-gradient(1px 1px at 91% 40%,rgba(255,255,255,.55),transparent),
+  radial-gradient(1px 1px at 22% 72%,rgba(255,255,255,.3),transparent),
+  radial-gradient(1px 1px at 67% 84%,rgba(255,255,255,.3),transparent),
+  radial-gradient(2px 2px at 6% 90%,rgba(255,255,255,.18),transparent),
+  radial-gradient(2px 2px at 96% 56%,rgba(255,255,255,.18),transparent);
+pointer-events:none;z-index:0;opacity:.5;transition:opacity .4s}
+
+/* ── THEME-SPECIFIC BODY OVERRIDES ── */
+[data-theme="maths"] body::before{
+  background:radial-gradient(ellipse at 20% 50%,rgba(79,195,247,.08),transparent 60%),
+             radial-gradient(ellipse at 80% 20%,rgba(171,71,188,.08),transparent 60%);
+  opacity:1}
+[data-theme="history"] body::before{
+  background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(212,160,23,.025) 39px,rgba(212,160,23,.025) 40px),
+             radial-gradient(ellipse at 15% 30%,rgba(200,121,65,.07),transparent 55%);
+  opacity:1}
+[data-theme="universe"] body::before{
+  background:radial-gradient(ellipse at 20% 50%,#0a1a3a,#050d1f 70%);
+  opacity:1}
+[data-theme="universe"] body::after{
+  content:'';position:fixed;top:22%;left:-5%;width:3px;height:3px;
+  background:#4fc3f7;border-radius:50%;
+  box-shadow:-40px 0 20px 8px rgba(79,195,247,.6),-80px 0 30px 4px rgba(79,195,247,.3);
+  animation:comet 12s linear infinite;pointer-events:none;z-index:0}
+@keyframes comet{
+  0%{transform:translateX(-200px) translateY(-100px) rotate(-45deg);opacity:0}
+  10%{opacity:1}90%{opacity:1}
+  100%{transform:translateX(110vw) translateY(110vh) rotate(-45deg);opacity:0}}
+
+/* ══ CONTROLS (theme + lang) ══ */
+.ctrl-bar{position:fixed;top:10px;right:14px;z-index:500;display:flex;gap:7px}
+.ctrl-btn{background:var(--chip-bg);border:1px solid var(--border);border-radius:22px;padding:6px 13px;cursor:pointer;font-size:12px;font-weight:800;color:var(--a1);font-family:'Nunito',sans-serif;transition:all .2s;white-space:nowrap}
+.ctrl-btn:hover{transform:scale(1.05)}
+.theme-panel{position:fixed;top:46px;right:14px;z-index:499;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:10px;display:none;min-width:195px;box-shadow:0 8px 32px rgba(0,0,0,.6)}
+.theme-panel.show{display:block;animation:popIn .2s cubic-bezier(.34,1.56,.64,1)}
+.topt{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:10px;cursor:pointer;transition:background .15s;font-size:13px;font-weight:700;color:var(--text);white-space:nowrap}
+.topt:hover,.topt.active{background:var(--card2)}
+.topt.active{color:var(--a1)}
+.tdot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+
+/* ══ HEADER ══ */
+.hdr{position:sticky;top:0;z-index:200;background:var(--hdr-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:none;transition:background .35s}
+.hdr.show{display:block}
+.hdr-inner{max-width:1140px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.back-btn{background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:5px 14px;cursor:pointer;color:var(--text3);font-size:12px;font-weight:800;font-family:'Nunito',sans-serif;transition:all .2s;white-space:nowrap}
+.back-btn:hover{color:var(--a1);border-color:var(--a1)}
+.avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a3));display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',sans-serif;font-size:15px;color:var(--bg);flex-shrink:0;animation:avatarPulse 3s ease-in-out infinite}
+@keyframes avatarPulse{0%,100%{box-shadow:0 0 14px rgba(255,255,255,.2)}50%{box-shadow:0 0 24px rgba(255,255,255,.4)}}
+.hdr-info{flex:1;min-width:110px}
+.hdr-name{font-family:var(--heading-font);font-size:15px;color:var(--a1);line-height:1.2}
+.hdr-sub{font-size:10px;color:var(--text3);margin-top:1px}
+.hdr-stats{display:flex;gap:6px;flex-wrap:wrap;margin-right:110px}
+.chip{background:var(--chip-bg);border:1px solid var(--border);border-radius:20px;padding:4px 11px;text-align:center;min-width:50px}
+.chip-v{font-family:'Fredoka One',sans-serif;font-size:14px;color:var(--a1);line-height:1}
+.chip-l{font-size:9px;color:var(--text3);margin-top:1px}
+.xp-wrap{background:var(--hdr-bg);padding:3px 14px 7px;border-bottom:1px solid var(--border)}
+.xp-inner{max-width:1140px;margin:0 auto}
+.xp-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-bottom:3px}
+.xp-track{height:6px;background:rgba(255,255,255,.07);border-radius:20px;overflow:hidden}
+.xp-fill{height:6px;border-radius:20px;background:var(--xp-grad);transition:width .6s;position:relative;overflow:hidden}
+.xp-fill::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:rgba(255,255,255,.25);animation:shine 2.2s ease-in-out infinite}
+@keyframes shine{0%{left:-50%}100%{left:150%}}
+
+/* Maths header: opaque gradient, no xp-wrap separation */
+[data-theme="maths"] .hdr{background:linear-gradient(135deg,#1565C0,#0D47A1,#1A237E)}
+[data-theme="maths"] .xp-wrap{background:transparent;border:none;padding-top:0}
+
+/* ══ NAV ══ */
+.snav{background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:88px;z-index:190;display:none}
+.snav.show{display:block}
+.snav-inner{max-width:1140px;margin:0 auto;display:flex;flex-wrap:wrap;padding:4px 8px;gap:3px}
+.nb{padding:6px 11px;font-size:12px;font-weight:800;font-family:'Nunito',sans-serif;color:var(--text3);background:none;border:1.5px solid transparent;border-radius:30px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.nb:hover{color:var(--text);background:rgba(255,255,255,.06);border-color:var(--border)}
+.nb.active{color:var(--bg);background:linear-gradient(135deg,var(--a1),var(--a1d));border-color:transparent}
+
+/* Maths nav: underline grid */
+[data-theme="maths"] .snav-inner{padding:0;gap:0}
+[data-theme="maths"] .nb{border-radius:0;border:none;border-bottom:3px solid transparent;padding:12px 14px}
+[data-theme="maths"] .nb.active{background:none;color:var(--a2);border-bottom-color:var(--a2);box-shadow:none}
+[data-theme="maths"] .nb:hover{background:rgba(255,255,255,.04);border-radius:0;color:var(--text)}
+
+/* History nav: amber glow pills */
+[data-theme="history"] .nb.active{background:rgba(212,160,23,.12);border-color:var(--a1);box-shadow:0 0 12px rgba(212,160,23,.25);color:var(--a1)}
+
+/* Universe nav: pulsing gold */
+[data-theme="universe"] .nb.active{animation:navPulse 2.5s ease-in-out infinite;background:rgba(255,215,0,.12);border-color:var(--a1);color:var(--a1)}
+@keyframes navPulse{0%,100%{box-shadow:0 0 10px rgba(255,215,0,.3)}50%{box-shadow:0 0 22px rgba(255,215,0,.6)}}
+
+/* History headings use Playfair */
+[data-theme="history"] .ctitle,[data-theme="history"] .landing-hero h1,
+[data-theme="history"] .sc-title,[data-theme="history"] .res-title,
+[data-theme="history"] .quiz-title,[data-theme="history"] .hdr-name{font-family:'Playfair Display',serif}
+
+/* Universe + History: backdrop-blur cards */
+[data-theme="universe"] .card,[data-theme="history"] .card{backdrop-filter:blur(8px)}
+
+/* ══ MAIN ══ */
+.main{max-width:1140px;margin:0 auto;padding:20px 14px 80px;position:relative;z-index:1}
+.sec{display:none;animation:fadeUp .3s ease}
+.sec.active{display:block}
+.sub{display:none;animation:fadeUp .3s ease}
+.sub.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes popIn{0%{opacity:0;transform:scale(.85)}100%{opacity:1;transform:scale(1)}}
+
+/* ══ CARD ══ */
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;margin-bottom:14px;position:relative;overflow:hidden;transition:box-shadow .25s,transform .25s}
+.card:hover{transform:translateY(-2px)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-top);border-radius:18px 18px 0 0}
+.ctitle{font-family:var(--heading-font);font-size:19px;color:var(--a1);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+
+/* ══ LANDING ══ */
+.landing-hero{background:var(--hero);border-radius:20px;padding:36px 26px;margin-bottom:22px;border:1px solid var(--border);text-align:center;position:relative;overflow:hidden}
+.landing-hero h1{font-family:var(--heading-font);font-size:clamp(22px,5vw,40px);color:#fff;margin-bottom:10px;line-height:1.2}
+.landing-hero h1 span{color:var(--a1);text-shadow:0 0 18px rgba(255,255,255,.3)}
+.landing-hero p{font-size:clamp(13px,2vw,15px);color:var(--text2);max-width:480px;margin:0 auto 6px;line-height:1.7}
+.hero-em{font-size:clamp(26px,5vw,42px);display:block;margin-bottom:12px;animation:ef 3s ease-in-out infinite}
+@keyframes ef{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+.subj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:22px}
+.sc{border-radius:18px;padding:26px 18px;text-align:center;cursor:pointer;transition:all .3s;border:1.5px solid rgba(255,255,255,.08)}
+.sc:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 18px 48px rgba(0,0,0,.5)}
+.sc:nth-child(1){background:linear-gradient(135deg,#1a0a4a,#0a1a3a)}
+.sc:nth-child(2){background:linear-gradient(135deg,#0a1a2a,#0a2a3a)}
+.sc:nth-child(3){background:linear-gradient(135deg,#2d0a5a,#1a0030)}
+.sc:nth-child(4){background:linear-gradient(135deg,#2a1000,#0a2020)}
+.sc:nth-child(5){background:linear-gradient(135deg,#050d1f,#0a1a3a)}
+.sc-em{font-size:48px;display:block;margin-bottom:10px;animation:spin 6s ease-in-out infinite}
+@keyframes spin{0%,100%{transform:rotate(-3deg) scale(1)}50%{transform:rotate(3deg) scale(1.08)}}
+.sc-title{font-family:var(--heading-font);font-size:19px;color:var(--a1);margin-bottom:5px}
+.sc-sub{font-size:11px;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:10px}
+.sc-badge{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:3px 12px;font-size:10px;color:var(--a3);font-weight:800}
+.gstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.gstat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center}
+.gstat-v{font-family:'Fredoka One',sans-serif;font-size:26px;color:var(--a1)}
+.gstat-l{font-size:11px;color:var(--text3);margin-top:4px}
+
+/* ══ QUIZ ENGINE ══ */
+.opts-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:11px 0}
+.opt{padding:10px 13px;border-radius:12px;border:2px solid var(--border);background:var(--card2);color:var(--text);font-family:'Noto Sans Bengali','Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;text-align:left;word-break:break-word}
+.opt:hover:not(:disabled){border-color:var(--a2);background:rgba(255,255,255,.05);transform:translateY(-2px)}
+.opt.correct{background:rgba(102,187,106,.18)!important;border-color:var(--ok)!important;color:var(--ok)!important}
+.opt.wrong{background:rgba(239,83,80,.12)!important;border-color:var(--ng)!important;color:var(--ng)!important}
+.opt:disabled{cursor:default}
+/* Maths: text-align left with letter chip */
+[data-theme="maths"] .opt{border-radius:14px;font-family:'Nunito',sans-serif}
+.qcard{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px}
+.qtext{font-size:14px;font-weight:700;color:var(--text);line-height:1.7;margin-bottom:4px}
+.fb{padding:10px 14px;border-radius:12px;font-size:13px;font-weight:700;margin:7px 0;display:none;line-height:1.6}
+.fb.show{display:block;animation:popIn .3s cubic-bezier(.34,1.56,.64,1)}
+.fb.ok{background:rgba(102,187,106,.12);border:1px solid var(--ok);color:var(--ok)}
+.fb.ng{background:rgba(239,83,80,.1);border:1px solid var(--ng);color:var(--ng)}
+.nxt{display:none;margin-top:10px;padding:10px 20px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--a2),var(--a3));color:var(--bg);font-family:'Fredoka One',sans-serif;font-size:14px;cursor:pointer;transition:all .2s}
+.nxt.show{display:inline-block}
+.nxt:hover{transform:translateY(-2px)}
+[data-theme="maths"] .nxt{background:linear-gradient(135deg,#1565C0,#0D47A1);color:#fff}
+.quiz-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:6px}
+.quiz-title{font-family:var(--heading-font);font-size:15px;color:var(--a1)}
+.quiz-sc{font-size:11px;color:var(--text3);font-weight:700}
+.prog-wrap{margin-bottom:12px}
+.prog-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-bottom:4px}
+.prog-track{height:6px;background:rgba(255,255,255,.07);border-radius:20px;overflow:hidden}
+.prog-fill{height:6px;border-radius:20px;background:linear-gradient(90deg,var(--a2),var(--a3));transition:width .4s}
+
+/* ══ RESULTS ══ */
+.res-card{text-align:center;padding:24px 16px}
+.res-em{font-size:50px;display:block;margin-bottom:10px;animation:ef 2s ease-in-out infinite}
+.res-title{font-family:var(--heading-font);font-size:23px;color:var(--a1);margin-bottom:6px}
+.res-score{font-family:'Fredoka One',sans-serif;font-size:36px;margin-bottom:6px}
+.res-msg{font-size:13px;color:var(--text2);margin-bottom:12px;line-height:1.6}
+.xp-earned{display:inline-block;background:rgba(255,255,255,.05);border:1px solid var(--a1);border-radius:30px;padding:6px 18px;font-size:13px;font-weight:800;color:var(--a1);margin-bottom:16px}
+.rstbtn{padding:9px 20px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--a3),var(--a2));color:var(--bg);font-family:'Fredoka One',sans-serif;font-size:13px;cursor:pointer;transition:all .2s}
+.rstbtn:hover{transform:translateY(-2px)}
+
+/* ══ FLASHCARD ══ */
+.fc-wrap{perspective:600px;width:260px;height:140px;margin:0 auto 14px;cursor:pointer}
+.fc{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .5s}
+.fc.flipped{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;border-radius:16px;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',sans-serif;font-size:18px;backface-visibility:hidden;border:2px solid var(--border);text-align:center;padding:12px;line-height:1.3}
+.fc-f{background:linear-gradient(135deg,var(--card),var(--card2));color:var(--a1)}
+.fc-b{background:linear-gradient(135deg,var(--card2),var(--card));color:var(--a3);transform:rotateY(180deg)}
+.fc-hint{font-size:11px;color:var(--text3);text-align:center;margin-bottom:8px}
+.fc-nav{display:flex;gap:10px;justify-content:center;margin-bottom:14px;align-items:center}
+.fc-counter{font-size:12px;color:var(--text3);font-weight:700;padding:6px 10px}
+.fcbtn{padding:8px 16px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--a2),var(--a3));color:var(--bg);font-family:'Fredoka One',sans-serif;font-size:13px;cursor:pointer;transition:all .2s}
+.fcbtn:hover{transform:translateY(-1px)}
+/* History flashcards */
+[data-theme="history"] .fc-f{background:linear-gradient(135deg,#271504,#150900);border-color:rgba(212,160,23,.35)}
+[data-theme="history"] .fc-b{background:linear-gradient(135deg,rgba(42,157,143,.12),#150900);border-color:rgba(42,157,143,.45)}
+/* Geography flashcards */
+[data-theme="universe"] .fc-f{background:linear-gradient(135deg,#0e2a5c,rgba(14,42,92,.9));border-color:rgba(255,215,0,.3)}
+[data-theme="universe"] .fc-b{background:linear-gradient(135deg,rgba(0,212,170,.15),#0e2a5c);border-color:rgba(0,212,170,.4)}
+
+/* ══ QA REVEAL ══ */
+.qa-item{padding:13px;border-radius:14px;border:1px solid var(--border);background:var(--card2);margin-bottom:9px}
+.qa-q{font-size:14px;font-weight:800;color:var(--a1);margin-bottom:7px;line-height:1.6}
+.qa-ans{font-size:13px;color:var(--text2);line-height:1.8;display:none;margin-top:8px;padding:10px;background:rgba(255,255,255,.04);border-radius:10px;border:1px solid var(--a3)}
+.qa-ans.show{display:block;animation:fadeUp .3s ease}
+.rev-btn{padding:6px 14px;border-radius:10px;border:1.5px solid var(--a3);background:none;color:var(--a3);font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;cursor:pointer;transition:all .2s}
+.rev-btn:hover{background:rgba(255,255,255,.05)}
+
+/* ══ TABS ══ */
+.etabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.etab{padding:7px 14px;font-size:12px;font-weight:800;border:1.5px solid var(--border);border-radius:30px;cursor:pointer;background:var(--card2);color:var(--text3);transition:all .2s;font-family:'Nunito',sans-serif}
+.etab:hover{border-color:var(--a2);color:var(--a2)}
+.etab.active{background:linear-gradient(135deg,var(--a2),var(--a3));color:var(--bg);border-color:transparent}
+.ep{display:none}.ep.active{display:block;animation:fadeUp .3s ease}
+
+/* ══ MISC ══ */
+.essay-text{font-size:14px;color:var(--text2);line-height:2;background:rgba(255,255,255,.02);border-radius:12px;padding:14px;border:1px solid var(--border);margin-bottom:14px}
+/* History essay: Lora serif body */
+[data-theme="history"] .essay-text{font-family:'Lora',serif;line-height:2.1}
+.pf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:9px;margin-bottom:16px}
+.pf-item{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:11px 13px}
+.pf-label{font-size:10px;color:var(--text3);font-weight:800;text-transform:uppercase;letter-spacing:.7px;margin-bottom:4px}
+.pf-val{font-size:14px;color:var(--a1);font-weight:800}
+.fib-item{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px dashed rgba(255,255,255,.06);flex-wrap:wrap;font-size:13px;color:var(--text2)}
+.fib-blank{border:none;border-bottom:2px solid var(--a2);background:none;color:var(--a1);font-family:'Noto Sans Bengali','Nunito',sans-serif;font-size:14px;font-weight:800;width:140px;padding:2px 4px;outline:none;text-align:center}
+.fib-blank.ok{border-bottom-color:var(--ok);color:var(--ok)}
+.fib-blank.ng{border-bottom-color:var(--ng);color:var(--ng)}
+.ant-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:7px}
+.ant-pair{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:8px 11px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.poem-line{font-size:14px;color:var(--text2);line-height:2.2;padding:4px 0;border-bottom:1px dashed rgba(255,255,255,.06)}
+.poem-line:last-of-type{border:none}
+.poem-meaning{background:rgba(255,255,255,.03);border:1px solid var(--a1);border-radius:12px;padding:13px;margin:13px 0;font-size:13px;color:var(--text2);line-height:1.8}
+.timeline{position:relative;padding-left:28px;margin-bottom:14px}
+.timeline::before{content:'';position:absolute;left:9px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--a1),var(--a3),var(--a2))}
+.tl-item{position:relative;margin-bottom:14px;padding:11px 13px;background:var(--card2);border-radius:12px;border:1px solid var(--border)}
+.tl-item::before{content:'';position:absolute;left:-22px;top:14px;width:10px;height:10px;border-radius:50%;background:var(--a1);box-shadow:0 0 8px rgba(255,255,255,.25)}
+.tl-time{font-size:11px;color:var(--a1);font-weight:800;margin-bottom:3px}
+.tl-event{font-size:13px;font-weight:700;color:var(--a1);margin-bottom:3px}
+.tl-desc{font-size:12px;color:var(--text3);line-height:1.5}
+.planet-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:11px;margin-bottom:14px}
+.pc{border-radius:14px;padding:16px;border:1px solid var(--border);background:var(--card2);transition:transform .2s}
+.pc:hover{transform:translateY(-3px)}
+.pc-name{font-family:'Fredoka One',sans-serif;font-size:18px;color:var(--a1);margin-bottom:3px}
+.pc-eng{font-size:11px;color:var(--a3);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.pc-fact{font-size:11px;color:var(--text3);margin:2px 0}
+.pc-fact b{color:var(--text2)}
+.voc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.voc-card{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:13px 15px;transition:all .2s}
+[data-theme="universe"] .voc-card{border-color:rgba(0,212,170,.2)}
+[data-theme="universe"] .voc-card:hover{border-color:var(--a3);transform:translateX(5px)}
+.voc-word{font-family:'Fredoka One',sans-serif;font-size:16px;color:var(--a1);margin-bottom:5px}
+.voc-def{font-size:12px;color:var(--text2);line-height:1.6}
+.chkbtn{padding:9px 18px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--a3),var(--a2));color:var(--bg);font-family:'Fredoka One',sans-serif;font-size:13px;cursor:pointer;margin-top:8px;transition:all .2s}
+.chkbtn:hover{transform:translateY(-2px)}
+.badges-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.badge-card{border-radius:14px;padding:12px 10px;text-align:center;border:1.5px solid;transition:transform .2s}
+.badge-card:hover{transform:translateY(-3px)}
+.badge-card.earned{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.04)}
+.badge-card.locked{border-color:rgba(255,255,255,.06);background:rgba(255,255,255,.01);opacity:.5}
+.badge-icon{font-size:26px;margin-bottom:6px}
+.badge-name{font-family:'Fredoka One',sans-serif;font-size:12px;color:var(--a1);margin-bottom:3px}
+.badge-desc{font-size:10px;color:var(--text3);line-height:1.4}
+.story-para{font-size:14px;color:var(--text2);line-height:2;padding:14px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.02);margin-bottom:10px}
+[data-theme="english"] .story-para{font-family:'Lora',serif;border-left:3px solid var(--a2);padding-left:18px}
+.book-pair{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.07)}
+.book-pair:last-child{border:none}
+.book-title{font-size:14px;font-weight:800;color:var(--a1)}
+.book-auth{font-size:12px;color:var(--a3);margin-top:2px}
+@media(max-width:540px){
+  .opts-grid{grid-template-columns:1fr}
+  .subj-grid{grid-template-columns:1fr 1fr}
+  .planet-grid{grid-template-columns:1fr 1fr}
+  .hdr-stats{margin-right:100px}
+}
+</style>
+</head>
+<body>
+
+<!-- CONTROLS -->
+<div class="ctrl-bar">
+  <button class="ctrl-btn" id="lang-btn" onclick="toggleLang()">🌐 EN</button>
+  <button class="ctrl-btn" onclick="toggleTheme()">🎨 Theme</button>
+</div>
+<div class="theme-panel" id="theme-panel">
+  <div class="topt active" onclick="setTheme('space')" data-t="space"><div class="tdot" style="background:linear-gradient(135deg,#f6c90e,#a29bfe)"></div>🌌 Space</div>
+  <div class="topt" onclick="setTheme('maths')" data-t="maths"><div class="tdot" style="background:linear-gradient(135deg,#FFD600,#4FC3F7)"></div>🔢 Maths</div>
+  <div class="topt" onclick="setTheme('english')" data-t="english"><div class="tdot" style="background:linear-gradient(135deg,#f6c90e,#ff6b6b)"></div>📖 English</div>
+  <div class="topt" onclick="setTheme('history')" data-t="history"><div class="tdot" style="background:linear-gradient(135deg,#d4a017,#2a9d8f)"></div>🏛️ History</div>
+  <div class="topt" onclick="setTheme('universe')" data-t="universe"><div class="tdot" style="background:linear-gradient(135deg,#ffd700,#4fc3f7)"></div>🌍 Universe</div>
+</div>
+
+<!-- GLOBAL HEADER -->
+<div class="hdr" id="hdr">
+  <div class="hdr-inner">
+    <button class="back-btn" onclick="goHome()" data-lk="back">← Subjects</button>
+    <div class="avatar">A</div>
+    <div class="hdr-info">
+      <div class="hdr-name">Adhiraj Majumdar</div>
+      <div class="hdr-sub" id="hdr-sub">Class III · St. Xavier's</div>
+    </div>
+    <div class="hdr-stats">
+      <div class="chip"><div class="chip-v" id="hxp">0</div><div class="chip-l" data-lk="xp_l">⭐ XP</div></div>
+      <div class="chip"><div class="chip-v" id="hlvl">1</div><div class="chip-l" data-lk="lvl_l">🏅 Level</div></div>
+      <div class="chip"><div class="chip-v" id="hstr">0</div><div class="chip-l" data-lk="str_l">🔥 Streak</div></div>
+    </div>
+  </div>
+  <div class="xp-wrap">
+    <div class="xp-inner">
+      <div class="xp-labels"><span id="lvl-name">Beginner</span><span id="xp-next">100 XP to next level</span></div>
+      <div class="xp-track"><div class="xp-fill" id="xp-fill" style="width:0%"></div></div>
+    </div>
+  </div>
+</div>
+<div class="snav" id="snav"><div class="snav-inner" id="snav-inner"></div></div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- LANDING -->
+<div class="sec active" id="sec-landing">
+  <div class="landing-hero">
+    <span class="hero-em">🦋 📚 🌸 🔢 🌍</span>
+    <h1 data-lk="greeting">Hello, <span>Adhiraj!</span></h1>
+    <p data-lk="pick_subject">Which subject today? Pick one and learn, play, earn XP!</p>
+  </div>
+  <div class="subj-grid">
+    <div class="sc" onclick="openSubject('bengali')">
+      <span class="sc-em">📚</span>
+      <div class="sc-title" data-lk="sn_bengali">Bengali</div>
+      <div class="sc-sub">Antonyms · Grammar · Passages · Poems</div>
+      <span class="sc-badge">50 antonyms · 4 passages</span>
+    </div>
+    <div class="sc" onclick="openSubject('maths')">
+      <span class="sc-em">🔢</span>
+      <div class="sc-title" data-lk="sn_maths">Maths</div>
+      <div class="sc-sub">Large Numbers · Addition · Subtraction</div>
+      <span class="sc-badge">Ch. 2, 3, 4 · 5 Levels</span>
+    </div>
+    <div class="sc" onclick="openSubject('english')">
+      <span class="sc-em">📖</span>
+      <div class="sc-title" data-lk="sn_english">English</div>
+      <div class="sc-sub">Matilda — Roald Dahl · Vocabulary · Quiz</div>
+      <span class="sc-badge">Story · 5 Vocab · Quiz</span>
+    </div>
+    <div class="sc" onclick="openSubject('history')">
+      <span class="sc-em">🏛️</span>
+      <div class="sc-title" data-lk="sn_history">History</div>
+      <div class="sc-sub">What is History · Timeline · Sources</div>
+      <span class="sc-badge">14 events · Flashcards</span>
+    </div>
+    <div class="sc" onclick="openSubject('geography')">
+      <span class="sc-em">🌍</span>
+      <div class="sc-title" data-lk="sn_geography">Geography</div>
+      <div class="sc-sub">Our Universe · 8 Planets · Vocabulary</div>
+      <span class="sc-badge">8 planets · 20 flashcards</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ctitle" data-lk="progress_title">📊 Your Progress</div>
+    <div class="gstats">
+      <div class="gstat"><div class="gstat-v" id="g-xp">0</div><div class="gstat-l" data-lk="total_xp">Total XP ⭐</div></div>
+      <div class="gstat"><div class="gstat-v" id="g-lvl">1</div><div class="gstat-l" data-lk="current_lvl">Current Level 🏅</div></div>
+      <div class="gstat"><div class="gstat-v" id="g-str">0</div><div class="gstat-l" data-lk="best_streak">Best Streak 🔥</div></div>
+      <div class="gstat"><div class="gstat-v" id="g-bdg">0</div><div class="gstat-l" data-lk="badges_earned">Badges Earned 🏆</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- BENGALI SECTION -->
+<div class="sec" id="sec-bengali">
+  <div class="sub active" id="bn-home">
+    <div class="card">
+      <div class="ctitle">📚 বাংলা — বিষয়সমূহ</div>
+      <div class="subj-grid" style="margin-bottom:0">
+        <div class="sc" style="padding:18px 14px" onclick="showSub('bn','antonym')"><span class="sc-em" style="font-size:34px">🔄</span><div class="sc-title" style="font-size:16px">বিপরীত শব্দ</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('bn','grammar')"><span class="sc-em" style="font-size:34px">📖</span><div class="sc-title" style="font-size:16px">ব্যাকরণ</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('bn','essay')"><span class="sc-em" style="font-size:34px">✍️</span><div class="sc-title" style="font-size:16px">অনুচ্ছেদ</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('bn','poem')"><span class="sc-em" style="font-size:34px">🌸</span><div class="sc-title" style="font-size:16px">কবিতা</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('bn','aami')"><span class="sc-em" style="font-size:34px">👦</span><div class="sc-title" style="font-size:16px">আমি</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sub" id="bn-antonym">
+    <div class="card">
+      <div class="ctitle">🃏 ফ্ল্যাশকার্ড</div>
+      <div class="fc-hint">কার্ডে ক্লিক করো উত্তর দেখতে 👆</div>
+      <div class="fc-wrap" onclick="flipFC('ant')"><div class="fc" id="fc-ant"><div class="fc-f" id="fc-ant-f">—</div><div class="fc-b" id="fc-ant-b">—</div></div></div>
+      <div class="fc-nav">
+        <button class="fcbtn" onclick="prevFC('ant')">← আগে</button>
+        <span class="fc-counter" id="fc-ant-ctr">1 / 50</span>
+        <button class="fcbtn" onclick="nextFC('ant')">পরে →</button>
+      </div>
+    </div>
+    <div class="card"><div class="ctitle">🎯 বিপরীত শব্দ কুইজ</div><div id="ant-quiz"></div></div>
+    <div class="card"><div class="ctitle">📋 সম্পূর্ণ তালিকা</div><div class="ant-list" id="ant-list"></div></div>
+  </div>
+  <div class="sub" id="bn-grammar">
+    <div class="card"><div class="ctitle">📖 ভাষা ও ব্যাকরণ</div><div id="grammar-qa"></div></div>
+    <div class="card"><div class="ctitle">🎯 ব্যাকরণ কুইজ</div><div id="grammar-quiz"></div></div>
+  </div>
+  <div class="sub" id="bn-essay"><div class="etabs" id="essay-tabs"></div><div id="essay-content"></div></div>
+  <div class="sub" id="bn-poem"><div class="etabs" id="poem-tabs"></div><div id="poem-content"></div></div>
+  <div class="sub" id="bn-aami">
+    <div class="card">
+      <div class="ctitle">👦 আমার পরিচয়</div>
+      <div class="pf-grid">
+        <div class="pf-item"><div class="pf-label">নাম</div><div class="pf-val">অধিরাজ মজুমদার</div></div>
+        <div class="pf-item"><div class="pf-label">বয়স</div><div class="pf-val">৭ বছর</div></div>
+        <div class="pf-item"><div class="pf-label">স্কুল</div><div class="pf-val">সেন্ট জেভিয়ার্স কলেজিয়েট</div></div>
+        <div class="pf-item"><div class="pf-label">শ্রেণী</div><div class="pf-val">তৃতীয় · বিভাগ ডি · রোল ২৯</div></div>
+        <div class="pf-item"><div class="pf-label">প্রিয় রং</div><div class="pf-val">লাল ❤️</div></div>
+        <div class="pf-item"><div class="pf-label">প্রিয় খাবার</div><div class="pf-val">বিরিয়ানি 🍛</div></div>
+        <div class="pf-item"><div class="pf-label">প্রিয় খেলা</div><div class="pf-val">ক্রিকেট 🏏</div></div>
+        <div class="pf-item"><div class="pf-label">প্রিয় বিষয়</div><div class="pf-val">অঙ্ক 🔢</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ctitle">✏️ শূন্যস্থান পূরণ করো</div>
+      <div id="fib-area"></div>
+      <button class="chkbtn" onclick="checkFIB()" style="margin-top:14px">পরীক্ষা করো ✓</button>
+      <div class="fb" id="fib-fb"></div>
+      <button class="rstbtn" onclick="initFIB()" style="margin-top:8px">🔄 আবার</button>
+    </div>
+  </div>
+</div>
+
+<!-- MATHS SECTION -->
+<div class="sec" id="sec-maths">
+  <div class="sub active" id="mt-home">
+    <div class="card">
+      <div class="ctitle">🔢 <span data-lk="sn_maths">Maths</span> — Chapters</div>
+      <div class="subj-grid" style="margin-bottom:0">
+        <div class="sc" style="padding:18px 14px" onclick="showSub('mt','ch2')"><span class="sc-em" style="font-size:34px">📊</span><div class="sc-title" style="font-size:15px">Ch. 2<br>Large Numbers</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('mt','ch3')"><span class="sc-em" style="font-size:34px">➕</span><div class="sc-title" style="font-size:15px">Ch. 3<br>Addition</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('mt','ch4')"><span class="sc-em" style="font-size:34px">➖</span><div class="sc-title" style="font-size:15px">Ch. 4<br>Subtraction</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('mt','practice')"><span class="sc-em" style="font-size:34px">🎯</span><div class="sc-title" style="font-size:15px">Practice<br>Quiz</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sub" id="mt-ch2"><div class="card"><div class="ctitle">📊 Chapter 2 — Large Numbers</div><div id="mt-ch2-content"></div></div><div class="card"><div class="ctitle">🎯 Chapter 2 Quiz</div><div id="mt-ch2-quiz"></div></div></div>
+  <div class="sub" id="mt-ch3"><div class="card"><div class="ctitle">➕ Chapter 3 — Addition</div><div id="mt-ch3-content"></div></div><div class="card"><div class="ctitle">🎯 Chapter 3 Quiz</div><div id="mt-ch3-quiz"></div></div></div>
+  <div class="sub" id="mt-ch4"><div class="card"><div class="ctitle">➖ Chapter 4 — Subtraction</div><div id="mt-ch4-content"></div></div><div class="card"><div class="ctitle">🎯 Chapter 4 Quiz</div><div id="mt-ch4-quiz"></div></div></div>
+  <div class="sub" id="mt-practice">
+    <div class="card">
+      <div class="ctitle">🎯 Practice Quiz — Choose Level</div>
+      <div class="etabs">
+        <button class="etab active" onclick="loadMathsPractice(1,this)">🌱 Level 1</button>
+        <button class="etab" onclick="loadMathsPractice(2,this)">📈 Level 2</button>
+        <button class="etab" onclick="loadMathsPractice(3,this)">🏆 Level 3</button>
+        <button class="etab" onclick="loadMathsPractice(4,this)">🧩 Word Problems</button>
+      </div>
+      <div id="mt-practice-quiz"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ENGLISH SECTION -->
+<div class="sec" id="sec-english">
+  <div class="sub active" id="en-home">
+    <div class="card">
+      <div class="ctitle">📖 English — Matilda</div>
+      <div class="subj-grid" style="margin-bottom:0">
+        <div class="sc" style="padding:18px 14px" onclick="showSub('en','story')"><span class="sc-em" style="font-size:34px">📖</span><div class="sc-title" style="font-size:16px">Story</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('en','vocab')"><span class="sc-em" style="font-size:34px">✨</span><div class="sc-title" style="font-size:16px">Vocabulary</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('en','books')"><span class="sc-em" style="font-size:34px">📚</span><div class="sc-title" style="font-size:16px">Books</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('en','quiz')"><span class="sc-em" style="font-size:34px">🎯</span><div class="sc-title" style="font-size:16px">Quiz</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sub" id="en-story"><div class="card"><div class="ctitle">📖 Matilda — Story by Roald Dahl</div><div id="en-story-content"></div></div></div>
+  <div class="sub" id="en-vocab">
+    <div class="card"><div class="ctitle">✨ Vocabulary — Flashcards</div>
+      <div class="fc-hint">Click the card to see the meaning 👆</div>
+      <div class="fc-wrap" onclick="flipFC('en')"><div class="fc" id="fc-en"><div class="fc-f" id="fc-en-f">—</div><div class="fc-b" id="fc-en-b">—</div></div></div>
+      <div class="fc-nav">
+        <button class="fcbtn" onclick="prevFC('en')">← Prev</button>
+        <span class="fc-counter" id="fc-en-ctr">1 / 5</span>
+        <button class="fcbtn" onclick="nextFC('en')">Next →</button>
+      </div>
+    </div>
+    <div class="card"><div class="ctitle">📝 Vocabulary Cards</div><div class="voc-grid" id="en-voc-grid"></div></div>
+    <div class="card"><div class="ctitle">🎯 Vocabulary Quiz</div><div id="en-vocab-quiz"></div></div>
+  </div>
+  <div class="sub" id="en-books"><div class="card"><div class="ctitle">📚 Books Matilda Read</div><div id="en-books-content"></div></div></div>
+  <div class="sub" id="en-quiz"><div class="card"><div class="ctitle">🎯 Comprehension Quiz</div><div id="en-quiz-content"></div></div></div>
+</div>
+
+<!-- HISTORY SECTION -->
+<div class="sec" id="sec-history">
+  <div class="sub active" id="hs-home">
+    <div class="card">
+      <div class="ctitle">🏛️ History — What is History?</div>
+      <div class="subj-grid" style="margin-bottom:0">
+        <div class="sc" style="padding:18px 14px" onclick="showSub('hs','timeline')"><span class="sc-em" style="font-size:34px">📅</span><div class="sc-title" style="font-size:16px">Timeline</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('hs','vocab')"><span class="sc-em" style="font-size:34px">📝</span><div class="sc-title" style="font-size:16px">Vocabulary</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('hs','flash')"><span class="sc-em" style="font-size:34px">🃏</span><div class="sc-title" style="font-size:16px">Flashcards</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('hs','quiz')"><span class="sc-em" style="font-size:34px">🎯</span><div class="sc-title" style="font-size:16px">Quiz</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sub" id="hs-timeline"><div class="card"><div class="ctitle">📅 History Timeline</div><div class="timeline" id="hs-timeline-content"></div></div></div>
+  <div class="sub" id="hs-vocab"><div class="card"><div class="ctitle">📝 Key Words</div><div class="voc-grid" id="hs-voc-grid"></div></div></div>
+  <div class="sub" id="hs-flash">
+    <div class="card"><div class="ctitle">🃏 Flashcards</div>
+      <div class="fc-hint">Click the card to flip 👆</div>
+      <div class="fc-wrap" onclick="flipFC('hs')"><div class="fc" id="fc-hs"><div class="fc-f" id="fc-hs-f">—</div><div class="fc-b" id="fc-hs-b">—</div></div></div>
+      <div class="fc-nav">
+        <button class="fcbtn" onclick="prevFC('hs')">← Prev</button>
+        <span class="fc-counter" id="fc-hs-ctr">1 / 12</span>
+        <button class="fcbtn" onclick="nextFC('hs')">Next →</button>
+      </div>
+    </div>
+  </div>
+  <div class="sub" id="hs-quiz"><div class="card"><div class="ctitle">🎯 History Quiz</div><div id="hs-quiz-content"></div></div></div>
+</div>
+
+<!-- GEOGRAPHY SECTION -->
+<div class="sec" id="sec-geography">
+  <div class="sub active" id="geo-home">
+    <div class="card">
+      <div class="ctitle">🌍 Geography — Our Universe</div>
+      <div class="subj-grid" style="margin-bottom:0">
+        <div class="sc" style="padding:18px 14px" onclick="showSub('geo','planets')"><span class="sc-em" style="font-size:34px">🪐</span><div class="sc-title" style="font-size:16px">Planets</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('geo','vocab')"><span class="sc-em" style="font-size:34px">📝</span><div class="sc-title" style="font-size:16px">Vocabulary</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('geo','flash')"><span class="sc-em" style="font-size:34px">🃏</span><div class="sc-title" style="font-size:16px">Flashcards</div></div>
+        <div class="sc" style="padding:18px 14px" onclick="showSub('geo','quiz')"><span class="sc-em" style="font-size:34px">🎯</span><div class="sc-title" style="font-size:16px">Quiz</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sub" id="geo-planets"><div class="card"><div class="ctitle">🪐 Planets of the Solar System</div><div class="planet-grid" id="geo-planet-grid"></div></div></div>
+  <div class="sub" id="geo-vocab"><div class="card"><div class="ctitle">📝 Key Words</div><div class="voc-grid" id="geo-voc-grid"></div></div></div>
+  <div class="sub" id="geo-flash">
+    <div class="card"><div class="ctitle">🃏 Flashcards</div>
+      <div class="fc-hint">Click the card to flip 👆</div>
+      <div class="fc-wrap" onclick="flipFC('geo')"><div class="fc" id="fc-geo"><div class="fc-f" id="fc-geo-f">—</div><div class="fc-b" id="fc-geo-b">—</div></div></div>
+      <div class="fc-nav">
+        <button class="fcbtn" onclick="prevFC('geo')">← Prev</button>
+        <span class="fc-counter" id="fc-geo-ctr">1 / 20</span>
+        <button class="fcbtn" onclick="nextFC('geo')">Next →</button>
+      </div>
+    </div>
+  </div>
+  <div class="sub" id="geo-quiz"><div class="card"><div class="ctitle">🎯 Universe Quiz</div><div id="geo-quiz-content"></div></div></div>
+</div>
+
+</div><!-- /main -->
+<script>
+/* ════════ LANGUAGE ════════ */
+const LANG={
+  en:{
+    back:'← Subjects',greeting:'Hello, <span>Adhiraj!</span>',
+    pick_subject:'Which subject today? Pick one and learn, play, earn XP!',
+    progress_title:'📊 Your Progress',total_xp:'Total XP ⭐',
+    current_lvl:'Current Level 🏅',best_streak:'Best Streak 🔥',badges_earned:'Badges Earned 🏆',
+    xp_l:'⭐ XP',lvl_l:'🏅 Level',str_l:'🔥 Streak',
+    sn_bengali:'Bengali',sn_maths:'Maths',sn_english:'English',sn_history:'History',sn_geography:'Geography',
+    correct:'🎉 Correct!',wrong:'❌ Wrong. Right answer:',
+    nxt:'Next →',finish:'See Results 🏆',restart:'🔄 Try Again',
+    quiz_done:'Quiz Done!',perfect:'Perfect! You\'re a champion!',excellent:'Excellent!',
+    good:'Good! Study a bit more.',keep_trying:'Keep trying!',xp_earned:'XP Earned! ⭐',
+    q_of:'Question',score:'Score',progress:'Progress',
+    lvl_names:['Beginner','Explorer','Scholar','Expert','Champion','Maestro','Grand Master'],
+    xp_to_next:' XP to next level',
+    lvl_up:'🎉 Level Up!',lvl_now:'You are now Level ',
+  },
+  bn:{
+    back:'← বিষয়',greeting:'নমস্কার, <span>অধিরাজ!</span>',
+    pick_subject:'কোন বিষয় আজ পড়বে? বেছে নাও এবং শেখো, খেলো, XP জমাও!',
+    progress_title:'📊 তোমার অগ্রগতি',total_xp:'মোট XP ⭐',
+    current_lvl:'বর্তমান স্তর 🏅',best_streak:'সেরা ধারা 🔥',badges_earned:'অর্জিত ব্যাজ 🏆',
+    xp_l:'⭐ XP',lvl_l:'🏅 স্তর',str_l:'🔥 ধারা',
+    sn_bengali:'বাংলা',sn_maths:'গণিত',sn_english:'ইংরেজি',sn_history:'ইতিহাস',sn_geography:'ভূগোল',
+    correct:'🎉 সঠিক!',wrong:'❌ ভুল। সঠিক উত্তর:',
+    nxt:'পরে →',finish:'ফলাফল দেখো 🏆',restart:'🔄 আবার চেষ্টা',
+    quiz_done:'কুইজ শেষ!',perfect:'পারফেক্ট! তুমি চ্যাম্পিয়ন!',excellent:'অসাধারণ!',
+    good:'ভালো! আরেকটু পড়ো।',keep_trying:'চেষ্টা চালিয়ে যাও!',xp_earned:'XP অর্জিত! ⭐',
+    q_of:'প্রশ্ন',score:'স্কোর',progress:'অগ্রগতি',
+    lvl_names:['শিক্ষানবিশ','অন্বেষণকারী','পণ্ডিত','বিশেষজ্ঞ','চ্যাম্পিয়ন','মেধাবী','গ্র্যান্ড মাস্টার'],
+    xp_to_next:' XP পরের স্তরে',
+    lvl_up:'🎉 স্তর বৃদ্ধি!',lvl_now:'তুমি এখন স্তর ',
+  }
+};
+let CL='en';
+function t(k){return(LANG[CL][k]||LANG.en[k]||k)}
+function toggleLang(){setLang(CL==='en'?'bn':'en')}
+function setLang(l){
+  CL=l;
+  document.documentElement.setAttribute('data-lang',l);
+  document.getElementById('lang-btn').textContent=l==='en'?'🌐 EN':'🌐 বাংলা';
+  try{localStorage.setItem('adhiraj_c3_lang',l)}catch(e){}
+  applyLang();updateHUD();
+  // rebuild nav if subject open
+  if(_curSubj&&_curSubj!=='bengali')buildSubjNav(_curSubj);
+}
+function applyLang(){
+  document.querySelectorAll('[data-lk]').forEach(el=>{
+    const k=el.getAttribute('data-lk');
+    if(k==='greeting')el.innerHTML=t('greeting');
+    else el.textContent=t(k);
+  });
+}
+
+/* ════════ STATE & XP ════════ */
+const XPL=150;
+let S={xp:0,level:1,streak:0,best:0,badges:[],scores:{}};
+try{const r=JSON.parse(localStorage.getItem('adhiraj_c3'));if(r)S=r}catch(e){}
+function save(){try{localStorage.setItem('adhiraj_c3',JSON.stringify(S))}catch(e){}}
+function addXP(n){
+  S.xp+=n;const nl=Math.floor(S.xp/XPL)+1;
+  if(nl>S.level){S.level=nl;showLevelUp()}
+  save();updateHUD();checkBadges();
+}
+function updateHUD(){
+  const ids=['hxp','hlvl','hstr','g-xp','g-lvl','g-str'];
+  const vals=[S.xp,S.level,S.streak,S.xp,S.level,S.best];
+  ids.forEach((id,i)=>{const el=document.getElementById(id);if(el)el.textContent=vals[i]});
+  const pct=(S.xp%XPL)/XPL*100;
+  const xf=document.getElementById('xp-fill');if(xf)xf.style.width=pct+'%';
+  const nm=t('lvl_names')[Math.min(S.level-1,6)];
+  const ln=document.getElementById('lvl-name');if(ln)ln.textContent=nm;
+  const xn=document.getElementById('xp-next');if(xn)xn.textContent=(XPL-(S.xp%XPL))+t('xp_to_next');
+  const gb=document.getElementById('g-bdg');if(gb)gb.textContent=S.badges.length;
+  applyLang();
+}
+function showLevelUp(){
+  const el=document.createElement('div');
+  el.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#FFD600,#FF7043);color:#000;padding:28px 44px;border-radius:22px;font-family:"Fredoka One",sans-serif;font-size:1.8rem;z-index:9999;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:popIn .4s cubic-bezier(.34,1.56,.64,1)';
+  el.innerHTML=t('lvl_up')+'<br><span style="font-size:1rem">'+t('lvl_now')+S.level+'!</span>';
+  document.body.appendChild(el);confetti();setTimeout(()=>el.remove(),2500);
+}
+
+/* ════════ THEME ════════ */
+const SUBJ_THEME={bengali:'space',maths:'maths',english:'english',history:'history',geography:'universe'};
+let _tp=false;
+function toggleTheme(){_tp=!_tp;document.getElementById('theme-panel').classList.toggle('show',_tp)}
+document.addEventListener('click',e=>{if(!e.target.closest('.ctrl-btn')&&!e.target.closest('.theme-panel')){_tp=false;document.getElementById('theme-panel').classList.remove('show')}});
+function setTheme(t2){
+  document.documentElement.setAttribute('data-theme',t2);
+  document.querySelectorAll('.topt').forEach(el=>el.classList.toggle('active',el.dataset.t===t2));
+  try{localStorage.setItem('adhiraj_c3_theme',t2)}catch(e){}
+}
+(()=>{const t2=localStorage.getItem('adhiraj_c3_theme')||'space';setTheme(t2)})();
+(()=>{const l=localStorage.getItem('adhiraj_c3_lang')||'en';setLang(l)})();
+
+/* ════════ ROUTING ════════ */
+const SUBJ_NAVS={
+  bengali:[['home','🏠 Home'],['antonym','🔄 Antonyms'],['grammar','📖 Grammar'],['essay','✍️ Passages'],['poem','🌸 Poems'],['aami','👦 About Me']],
+  maths:[['home','🏠 Home'],['ch2','📊 Large Numbers'],['ch3','➕ Addition'],['ch4','➖ Subtraction'],['practice','🎯 Practice']],
+  english:[['home','🏠 Home'],['story','📖 Story'],['vocab','✨ Vocab'],['books','📚 Books'],['quiz','🎯 Quiz']],
+  history:[['home','🏠 Home'],['timeline','📅 Timeline'],['vocab','📝 Words'],['flash','🃏 Flashcards'],['quiz','🎯 Quiz']],
+  geography:[['home','🏠 Home'],['planets','🪐 Planets'],['vocab','📝 Words'],['flash','🃏 Flashcards'],['quiz','🎯 Quiz']]
+};
+// Bengali nav always in Bengali
+const BN_NAVS=[['home','🏠 হোম'],['antonym','🔄 বিপরীত শব্দ'],['grammar','📖 ব্যাকরণ'],['essay','✍️ অনুচ্ছেদ'],['poem','🌸 কবিতা'],['aami','👦 আমি']];
+const SUBJ_LABEL={bengali:'📚',maths:'🔢',english:'📖',history:'🏛️',geography:'🌍'};
+let _curSubj=null;
+
+function openSubject(id){
+  _curSubj=id;
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  document.getElementById('hdr').classList.add('show');
+  document.getElementById('snav').classList.add('show');
+  document.getElementById('hdr-sub').textContent=SUBJ_LABEL[id]+' '+t('sn_'+id)+' · Class III';
+  setTheme(SUBJ_THEME[id]);
+  buildSubjNav(id);
+  showSub(id==='bengali'?'bn':id==='maths'?'mt':id==='english'?'en':id==='history'?'hs':'geo','home');
+  initSubject(id);
+}
+function buildSubjNav(id){
+  const prefix=id==='bengali'?'bn':id==='maths'?'mt':id==='english'?'en':id==='history'?'hs':'geo';
+  const navItems=id==='bengali'?BN_NAVS:SUBJ_NAVS[id];
+  const ni=document.getElementById('snav-inner');
+  ni.innerHTML=navItems.map(([k,l])=>`<button class="nb${k==='home'?' active':''}" onclick="showSub('${prefix}','${k}',this)">${l}</button>`).join('');
+}
+function showSub(prefix,id,btn){
+  document.querySelectorAll('#sec-'+_curSubj+' .sub').forEach(s=>s.classList.remove('active'));
+  const el=document.getElementById(prefix+'-'+id);if(el)el.classList.add('active');
+  document.querySelectorAll('.snav .nb').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  else{const b=document.querySelector(`.snav .nb[onclick*="'${id}'"]`);if(b)b.classList.add('active')}
+}
+function goHome(){
+  _curSubj=null;
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.getElementById('sec-landing').classList.add('active');
+  document.getElementById('hdr').classList.remove('show');
+  document.getElementById('snav').classList.remove('show');
+  const saved=localStorage.getItem('adhiraj_c3_theme')||'space';
+  setTheme(saved);updateHUD();
+}
+
+/* ════════ QUIZ ENGINE ════════ */
+const QS={};
+function buildQuiz(qs,cid,xpPer=15,key=''){
+  QS[cid]={qs:shuffle([...qs]),cur:0,score:0,xpPer,key};renderQ(cid);
+}
+function renderQ(cid){
+  const s=QS[cid];const q=s.qs[s.cur];const tot=s.qs.length;
+  const pct=s.cur/tot*100;
+  const optsHTML=q.opts.map(o=>`<button class="opt" data-v="${esc(o)}" onclick="checkQ(this,'${escJ(o)}','${escJ(q.ans)}','${cid}')">${esc(o)}</button>`).join('');
+  document.getElementById(cid).innerHTML=`
+    <div class="quiz-hd"><span class="quiz-title">${t('q_of')} ${s.cur+1}/${tot}</span><span class="quiz-sc">${t('score')}: ${s.score}/${tot}</span></div>
+    <div class="prog-wrap"><div class="prog-labels"><span>${t('progress')}</span><span>${s.cur}/${tot}</span></div><div class="prog-track"><div class="prog-fill" style="width:${pct}%"></div></div></div>
+    <div class="qcard"><div class="qtext">${esc(q.q)}</div><div class="opts-grid">${optsHTML}</div>
+    <div class="fb" id="fb-${cid}"></div>
+    <button class="nxt" id="nxt-${cid}" onclick="nextQ('${cid}')">${s.cur+1<tot?t('nxt'):t('finish')}</button></div>`;
+}
+function checkQ(btn,chosen,correct,cid){
+  document.querySelectorAll(`#${cid} .opt`).forEach(b=>b.disabled=true);
+  const fb=document.getElementById('fb-'+cid);const ok=chosen.trim()===correct.trim();
+  if(ok){btn.classList.add('correct');QS[cid].score++;S.streak++;S.best=Math.max(S.best,S.streak);
+    fb.innerHTML=t('correct')+' +'+QS[cid].xpPer+' '+t('xp_earned');fb.className='fb ok show';addXP(QS[cid].xpPer);confetti();}
+  else{btn.classList.add('wrong');S.streak=0;
+    document.querySelectorAll(`#${cid} .opt`).forEach(b=>{if(b.getAttribute('data-v')===correct)b.classList.add('correct')});
+    fb.innerHTML=t('wrong')+' <b>'+esc(correct)+'</b>';fb.className='fb ng show';}
+  document.getElementById('nxt-'+cid).classList.add('show');updateHUD();save();
+}
+function nextQ(cid){QS[cid].cur++;if(QS[cid].cur<QS[cid].qs.length)renderQ(cid);else showResults(cid)}
+function showResults(cid){
+  const s=QS[cid];const pct=Math.round(s.score/s.qs.length*100);
+  let em='💪',msg=t('keep_trying'),col='var(--a3)';
+  if(pct===100){em='🏆';msg=t('perfect');col='var(--a1)';confetti();}
+  else if(pct>=80){em='🌟';msg=t('excellent');col='var(--ok)';}
+  else if(pct>=60){em='😊';msg=t('good');col='var(--a3)';}
+  if(s.key){S.scores[s.key]=Math.max(S.scores[s.key]||0,pct);save();}
+  document.getElementById(cid).innerHTML=`<div class="res-card"><span class="res-em">${em}</span><div class="res-title">${t('quiz_done')}</div><div class="res-score" style="color:${col}">${s.score}/${s.qs.length} (${pct}%)</div><div class="res-msg">${msg}</div><div class="xp-earned">+${s.score*s.xpPer} ${t('xp_earned')}</div><br><button class="rstbtn" onclick="buildQuiz(QS['${cid}'].qs,'${cid}',${s.xpPer},'${s.key}')">${t('restart')}</button></div>`;
+  checkBadges();
+}
+
+/* ════════ FLASHCARD ENGINE ════════ */
+const FC={};
+function initFC(id,data){FC[id]={data,cur:0};updateFC(id)}
+function updateFC(id){
+  const {data,cur}=FC[id];
+  document.getElementById('fc-'+id+'-f').textContent=data[cur].q||data[cur][0];
+  document.getElementById('fc-'+id+'-b').textContent=data[cur].a||data[cur][1];
+  document.getElementById('fc-'+id+'-ctr').textContent=(cur+1)+' / '+data.length;
+  const el=document.getElementById('fc-'+id);if(el)el.classList.remove('flipped');
+}
+function flipFC(id){document.getElementById('fc-'+id).classList.toggle('flipped')}
+function nextFC(id){FC[id].cur=(FC[id].cur+1)%FC[id].data.length;updateFC(id)}
+function prevFC(id){FC[id].cur=(FC[id].cur-1+FC[id].data.length)%FC[id].data.length;updateFC(id)}
+
+/* ════════ SUBJECT INIT ════════ */
+const _inited={};
+function initSubject(id){if(_inited[id])return;_inited[id]=true;
+  if(id==='bengali')initBengali();if(id==='maths')initMaths();
+  if(id==='english')initEnglish();if(id==='history')initHistory();
+  if(id==='geography')initGeography();}
+
+/* ────── BENGALI ────── */
+const ANTONYMS=[["রাত","দিন"],["হাসি","কান্না"],["জয়","পরাজয়"],["লাভ","ক্ষতি"],["ভালো","মন্দ"],["সত্য","মিথ্যা"],["সোজা","বাঁকা"],["ইচ্ছা","অনিচ্ছা"],["দান","প্রতিদান"],["আসল","নকল"],["উত্তর","দক্ষিণ"],["জোয়ার","ভাটা"],["কাঁচা","পাকা"],["নিন্দা","প্রশংসা"],["পুরুষ","স্ত্রী"],["নতুন","পুরানো"],["ধনী","দরিদ্র"],["আলো","অন্ধকার"],["শত্রু","মিত্র"],["উচিত","অনুচিত"],["গুরু","শিষ্য"],["উষ্ণ","ঠান্ডা"],["সাদা","কালো"],["ন্যায়","অন্যায়"],["উপকার","অপকার"],["পূর্ব","পশ্চিম"],["জমা","খরচ"],["আরম্ভ","শেষ"],["হার","জিত"],["খাঁটি","ভেজাল"],["সহজ","কঠিন"],["চঞ্চল","স্থির"],["আকাশ","পাতাল"],["আসা","যাওয়া"],["লজ্জা","বেহায়া"],["সরল","জটিল"],["উপর","নিচ"],["পূর্ণ","শূন্য"],["উন্নতি","অবনতি"],["বন্ধন","মুক্তি"],["অলস","পরিশ্রমী"],["আশা","নিরাশা"],["ছোটো","বড়ো"],["গরিব","ধনী"],["না","হ্যাঁ"],["পুণ্য","পাপ"],["মরণ","জীবন"],["বাড়া","কমা"],["পুরুষ","নারী"],["দোষ","গুণ"]];
+const GRAMMAR_QA_DATA=[{q:"ভাষা কাকে বলে?",a:"মানুষ তার মনের ভাব অন্যজনকে জানাতে যার সাহায্যে কথা বলে বা লেখে, তাকে ভাষা বলে।"},{q:"এই পৃথিবীতে কত রকমের ভাষা আছে?",a:"এই পৃথিবীতে অসংখ্য ভাষা আছে। যেমন — বাংলা, হিন্দি, তামিল, ইংরেজি, ফ্রেঞ্চ, জার্মান।"},{q:"মাতৃভাষা কাকে বলে?",a:"আমরা জন্মসূত্রে যে ভাষা বাড়িতে শিখি, তাই আমাদের মাতৃভাষা।"},{q:"আমাদের মাতৃভাষার নাম কী?",a:"আমাদের মাতৃভাষার নাম বাংলা।"},{q:"ব্যাকরণ কাকে বলে?",a:"ভাষাকে শুদ্ধভাবে বলতে, পড়তে ও লিখতে পারার নিয়মগুলিকে ব্যাকরণ বলে।"},{q:"বাংলা ভাষাকে কত ভাগে ভাগ করা যায়?",a:"দুই ভাগে — (১) মুখের ভাষা বা কথ্য ভাষা এবং (২) লেখার ভাষা বা লেখ্য ভাষা।"}];
+const GRAMMAR_QUIZ=[{q:"ভাষা কাকে বলে?",opts:["মনের ভাব প্রকাশের মাধ্যম","রান্না করার নিয়ম","খেলার নিয়ম","হাঁটার পদ্ধতি"],ans:"মনের ভাব প্রকাশের মাধ্যম"},{q:"আমাদের মাতৃভাষার নাম কী?",opts:["হিন্দি","ইংরেজি","বাংলা","তামিল"],ans:"বাংলা"},{q:"বাংলা ভাষা কত ভাগে ভাগ করা যায়?",opts:["তিন","চার","এক","দুই"],ans:"দুই"},{q:"মাতৃভাষা কোথায় শেখা যায়?",opts:["বাজারে","মাঠে","স্কুলে","বাড়িতে"],ans:"বাড়িতে"},{q:"ব্যাকরণ কীসের নিয়ম?",opts:["খেলার","রান্নার","ভাষার শুদ্ধ ব্যবহারের","হাঁটার"],ans:"ভাষার শুদ্ধ ব্যবহারের"},{q:"কথ্য ভাষা মানে কী?",opts:["লেখার ভাষা","মুখে বলার ভাষা","সাংকেতিক ভাষা","বিদেশী ভাষা"],ans:"মুখে বলার ভাষা"}];
+const ESSAYS={
+  "বিড়াল":{emoji:"🐱",text:"অনেকের আদরের প্রাণী হল বিড়াল। বিড়াল আকারে ছোটো এবং অনেকটা বাঘের মতো দেখতে। এদের চারটি পা, দুটি চোখ, দুটি কান ও একটি লেজ থাকে। পায়ের ভেতরে লুকানো থাকে নখ। পায়ের নিচে থাকে নরম মাংসের পিণ্ড, তাই বিড়াল নিঃশব্দে চলাফেরা করতে পারে। এরা মাংসাশী — নেংটি ইঁদুর, পাখি, মাছ ও সাপ খায়। মাছ ও দুধ বিড়ালের প্রিয় খাদ্য। বিড়াল থেকে ডিপথেরিয়া রোগ ছড়াতে পারে।",
+   qa:[{q:"বিড়াল কেমন দেখতে?",opts:["বাঘের মতো","সিংহের মতো","ছাগলের মতো","কুকুরের মতো"],ans:"বাঘের মতো"},{q:"বিড়ালের প্রিয় খাদ্য কী?",opts:["মাংস ও ভাত","ঘাস ও পাতা","মাছ ও দুধ","ফল ও শাকসবজি"],ans:"মাছ ও দুধ"},{q:"বিড়াল থেকে কোন রোগ ছড়ায়?",opts:["ম্যালেরিয়া","ডিপথেরিয়া","কলেরা","টাইফয়েড"],ans:"ডিপথেরিয়া"},{q:"বিড়াল নিঃশব্দে চলে কেন?",opts:["পায়ে নখ আছে","পায়ে নরম মাংসের পিণ্ড আছে","পা ছোটো","পায়ে পশম আছে"],ans:"পায়ে নরম মাংসের পিণ্ড আছে"}]},
+  "গ্রীষ্মকাল":{emoji:"☀️",text:"বাংলার ছয়টি ঋতুর মধ্যে গ্রীষ্মকাল প্রথম ঋতু। বৈশাখ ও জ্যৈষ্ঠ মাস নিয়ে গ্রীষ্মকাল। এই সময় চারিদিকে খুব গরম পড়ে। গন্ধরাজ, বেলি, কাঠগোলাপ, মালতি, রঙ্গন প্রভৃতি ফুল ফোটে। আম, তরমুজ, কাঁঠাল, লিচু ফল পাওয়া যায়। গ্রীষ্মকালে স্কুলে ছুটি হয়। নববর্ষ, অক্ষয়তৃতীয়া ও রবীন্দ্রজয়ন্তী উৎসব পালন করা হয়।",
+   qa:[{q:"গ্রীষ্মকাল কোন দুই মাস?",opts:["আষাঢ় ও শ্রাবণ","বৈশাখ ও জ্যৈষ্ঠ","পৌষ ও মাঘ","ফাল্গুন ও চৈত্র"],ans:"বৈশাখ ও জ্যৈষ্ঠ"},{q:"গ্রীষ্মকালে কোন ফল পাওয়া যায়?",opts:["আপেল ও আঙুর","কমলা ও বেদানা","আম ও লিচু","স্ট্রবেরি ও চেরি"],ans:"আম ও লিচু"},{q:"গ্রীষ্মকাল বাংলার কোন নম্বর ঋতু?",opts:["দ্বিতীয়","তৃতীয়","চতুর্থ","প্রথম"],ans:"প্রথম"},{q:"গ্রীষ্মকালে কোন উৎসব হয়?",opts:["দুর্গাপূজা ও দীপাবলি","নববর্ষ ও রবীন্দ্রজয়ন্তী","ঈদ ও বড়দিন","হোলি ও দোল"],ans:"নববর্ষ ও রবীন্দ্রজয়ন্তী"}]},
+  "মৌমাছি":{emoji:"🐝",text:"মৌমাছিরা দেখতে সোনালি রঙের। এরা কখনো অকারণে আঘাত করে না। ফুল থেকে মধু সংগ্রহ করে দিনরাত কাজ করে। মৌমাছির মধু আমাদের শরীরের জন্য ভালো। মানুষ মৌচাক ভাঙতে গেলে মৌমাছিরা আক্রমণ করে। রানী মৌমাছি, পুরুষ মৌমাছি ও কর্মী মৌমাছি — তিন ধরনের মৌমাছি একটি মৌচাকে বাস করে।",
+   qa:[{q:"মৌমাছিরা কেমন দেখতে?",opts:["কালো","সাদা","সোনালি","লাল"],ans:"সোনালি"},{q:"মৌচাকে কত ধরনের মৌমাছি থাকে?",opts:["দুই","চার","এক","তিন"],ans:"তিন"},{q:"মৌমাছি কখন আক্রমণ করে?",opts:["সকালে","শীতকালে","মৌচাক ভাঙতে গেলে","সবসময়"],ans:"মৌচাক ভাঙতে গেলে"},{q:"মধু কীসের জন্য ভালো?",opts:["চোখের","পায়ের","শরীরের","মাথার"],ans:"শরীরের"}]},
+  "আমাদের দেশ":{emoji:"🇮🇳",text:"ভারত হল আমার দেশ, আমার মাতৃভূমি। ভারত পৃথিবীর অন্যতম প্রাচীন সভ্যতার দেশ। এই দেশে অনেক জাতি ও ধর্মের মানুষ একসঙ্গে বাস করে। পৃথিবীর সবচেয়ে বেশি জনসংখ্যার দেশগুলির মধ্যে ভারত একটি। ১৯৪৭ সালের ১৫ই আগস্ট ভারত স্বাধীন হয়েছিল।",
+   qa:[{q:"ভারত কবে স্বাধীন হয়?",opts:["২৬শে জানুয়ারি ১৯৫০","১৫ই আগস্ট ১৯৪৭","১৫ই আগস্ট ১৯৫০","২৬শে জানুয়ারি ১৯৪৭"],ans:"১৫ই আগস্ট ১৯৪৭"},{q:"স্বাধীনতা দিবস কবে?",opts:["২৬শে জানুয়ারি","২রা অক্টোবর","১৪ই নভেম্বর","১৫ই আগস্ট"],ans:"১৫ই আগস্ট"},{q:"ভারতে কেমন মানুষ বাস করে?",opts:["শুধু হিন্দু","শুধু বাঙালি","অনেক জাতি ও ধর্মের","শুধু মুসলিম"],ans:"অনেক জাতি ও ধর্মের"},{q:"লেখক দেশকে কীসের মতো ভালোবাসেন?",opts:["বন্ধুর","ভাইয়ের","শিক্ষকের","মায়ের"],ans:"মায়ের"}]}
+};
+const POEMS={"কোমল":{emoji:"🌸",lines:["পারিবে না বলে মুখ ফিরাও না তার,","অলস অবোধ বার বার,","কিছুই পারিবে না তারা,","তোমার তো দেখা নেই তাদের ভার,","তবে কেন পারিব না বল বার বার।","","পারিবে না বলে মুখ করিও না ভার,","তবে কেন পারিব না বল বার বার।"],meaning:"কাউকে অসমর্থ বলে ছেড়ে দেওয়া উচিত নয়। সকলকে সাহায্য করা উচিত।",qa:[{q:"কবিতার মূল বিষয় কী?",opts:["একা থাকা","সকলকে সাহায্য করা","পড়াশোনা এড়ানো","খেলাধুলা করা"],ans:"সকলকে সাহায্য করা"},{q:"'অলস অবোধ' কাদের বলা হয়?",opts:["যারা পরিশ্রম করে","যারা পারে না বলে ভাবা হয়","যারা ঘুমায়","যারা পড়াশোনা করে"],ans:"যারা পারে না বলে ভাবা হয়"}]},"চেষ্টার ফল":{emoji:"🏊",lines:["জলে না নামিলে কেহ শেখে না সাঁতার,","হাঁটিতে শেখে না কেহ না পড়ি আছাড়।","সাঁতার শিখিতে হলে,","আগে তবে নামো জলে,","আছাড় করিয়া হেলা হাঁটো আরবার।","","'পারিব' বলিয়া সুখে হও আগ্রহশীল,","চেষ্টায় মানুষ অসম্ভবকেও সম্ভব করতে পারে।"],meaning:"চেষ্টা না করলে কোনো কাজেই সফল হওয়া যায় না। চেষ্টার মাধ্যমে অসম্ভবকেও সম্ভব করা যায়।",qa:[{q:"জলে না নামলে কী শেখা যায় না?",opts:["দৌড়ানো","হাঁটা","উড়ে যাওয়া","সাঁতার"],ans:"সাঁতার"},{q:"কবিতার মূলভাব কী?",opts:["অলস থাকা ভালো","চেষ্টা না করলে সফল হওয়া যায় না","বড়দের কথা শোনা","খেলাধুলা করা"],ans:"চেষ্টা না করলে সফল হওয়া যায় না"},{q:"হাঁটতে শিখতে হলে কী করতে হয়?",opts:["জলে নামতে হয়","সাহায্য নিতে হয়","আছাড় খেয়েও বারবার চেষ্টা করতে হয়","দৌড়াতে হয়"],ans:"আছাড় খেয়েও বারবার চেষ্টা করতে হয়"}]}};
+const AAMI_SENTENCES=[["আমার নাম ___।","অধিরাজ মজুমদার"],["আমার বয়স ___ বছর।","৭"],["আমি ___ স্কুলে পড়ি।","সেন্ট জেভিয়ার্স কলেজিয়েট"],["আমার প্রিয় রং ___।","লাল"],["আমার প্রিয় খাবার ___।","বিরিয়ানি"],["আমার প্রিয় খেলা ___।","ক্রিকেট"],["আমার প্রিয় বিষয় ___।","অঙ্ক"],["আমার বাড়ির ঠিকানা ___।","৮/৩০২ নবতল, বৌবাজার, কলকাতা"]];
+
+function initBengali(){
+  initFC('ant',ANTONYMS);
+  buildQuiz(ANTONYMS.slice(0,15).map(([w,a])=>{const ws=shuffle(ANTONYMS.filter(x=>x[1]!==a)).slice(0,3).map(x=>x[1]);return{q:`"${w}" শব্দের বিপরীত শব্দ কী?`,opts:shuffle([a,...ws]),ans:a}}),'ant-quiz',15,'ant');
+  const al=document.getElementById('ant-list');
+  if(al)al.innerHTML=ANTONYMS.map(([w,a])=>`<div class="ant-pair"><span style="color:var(--a1);font-weight:700">${w}</span><span style="color:var(--text3);font-size:11px">↔</span><span style="color:var(--a3);font-weight:700">${a}</span></div>`).join('');
+  const gq=document.getElementById('grammar-qa');
+  if(gq)gq.innerHTML=GRAMMAR_QA_DATA.map((item,i)=>`<div class="qa-item"><div class="qa-q">প্র ${i+1}: ${item.q}</div><button class="rev-btn" onclick="toggleQA('gqa',${i})">উত্তর দেখো 👁️</button><div class="qa-ans" id="gqa-${i}">${item.a}</div></div>`).join('');
+  buildQuiz(GRAMMAR_QUIZ,'grammar-quiz',20,'grammar');
+  renderEssays();renderPoems();initFIB();
+}
+function toggleQA(prefix,i){document.getElementById(prefix+'-'+i).classList.toggle('show');addXP(5)}
+function renderEssays(){
+  const tabs=document.getElementById('essay-tabs');if(!tabs)return;
+  const names=Object.keys(ESSAYS);
+  tabs.innerHTML=names.map((n,i)=>`<button class="etab${i===0?' active':''}" onclick="showEssay('${escJ(n)}',this)">${ESSAYS[n].emoji} ${n}</button>`).join('');
+  showEssay(names[0],tabs.firstChild);
+}
+function showEssay(name,btn){
+  document.querySelectorAll('#essay-tabs .etab').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');
+  const e=ESSAYS[name];
+  const qHTML=e.qa.map((q,i)=>`<div class="qcard"><div class="qtext">প্র ${i+1}: ${q.q}</div><div class="opts-grid">${q.opts.map(o=>`<button class="opt" data-v="${esc(o)}" onclick="checkEssayQ(this,'${escJ(o)}','${escJ(q.ans)}','eqf-${escId(name)}-${i}')">${esc(o)}</button>`).join('')}</div><div class="fb" id="eqf-${escId(name)}-${i}"></div></div>`).join('');
+  document.getElementById('essay-content').innerHTML=`<div class="card"><div class="ctitle">${e.emoji} ${name}</div><div class="essay-text">${e.text}</div></div><div class="card"><div class="ctitle">🎯 বোধশক্তি প্রশ্ন</div>${qHTML}</div>`;
+}
+function checkEssayQ(btn,chosen,correct,fbId){
+  btn.closest('.qcard').querySelectorAll('.opt').forEach(b=>b.disabled=true);
+  const fb=document.getElementById(fbId);const ok=chosen.trim()===correct.trim();
+  if(ok){btn.classList.add('correct');S.streak++;fb.innerHTML=t('correct')+' +10 XP';fb.className='fb ok show';addXP(10);confetti();}
+  else{btn.classList.add('wrong');S.streak=0;btn.closest('.qcard').querySelectorAll('.opt').forEach(b=>{if(b.getAttribute('data-v')===correct)b.classList.add('correct')});fb.innerHTML=t('wrong')+' <b>'+esc(correct)+'</b>';fb.className='fb ng show';}
+  updateHUD();save();
+}
+function renderPoems(){
+  const tabs=document.getElementById('poem-tabs');if(!tabs)return;
+  const names=Object.keys(POEMS);
+  tabs.innerHTML=names.map((n,i)=>`<button class="etab${i===0?' active':''}" onclick="showPoem('${escJ(n)}',this)">${POEMS[n].emoji} ${n}</button>`).join('');
+  showPoem(names[0],tabs.firstChild);
+}
+function showPoem(name,btn){
+  document.querySelectorAll('#poem-tabs .etab').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');
+  const p=POEMS[name];
+  const lHTML=p.lines.map(l=>l?`<div class="poem-line">${l}</div>`:`<div style="height:10px"></div>`).join('');
+  const qHTML=p.qa.map((q,i)=>`<div class="qcard"><div class="qtext">প্র ${i+1}: ${q.q}</div><div class="opts-grid">${q.opts.map(o=>`<button class="opt" data-v="${esc(o)}" onclick="checkEssayQ(this,'${escJ(o)}','${escJ(q.ans)}','pqf-${escId(name)}-${i}')">${esc(o)}</button>`).join('')}</div><div class="fb" id="pqf-${escId(name)}-${i}"></div></div>`).join('');
+  document.getElementById('poem-content').innerHTML=`<div class="card"><div class="ctitle">${p.emoji} ${name}</div>${lHTML}<div class="poem-meaning">💡 <b>অর্থ:</b> ${p.meaning}</div></div><div class="card"><div class="ctitle">🎯 কবিতার প্রশ্ন</div>${qHTML}</div>`;
+}
+function initFIB(){
+  const el=document.getElementById('fib-area');if(!el)return;
+  el.innerHTML=AAMI_SENTENCES.map((s,i)=>{const p=s[0].split('___');return`<div class="fib-item">${p[0]}<input class="fib-blank" id="fib-${i}" placeholder="..."><span>${p[1]||''}</span></div>`}).join('');
+  document.getElementById('fib-fb').className='fb';
+}
+function checkFIB(){
+  let ok=0;
+  AAMI_SENTENCES.forEach((s,i)=>{const inp=document.getElementById('fib-'+i);if(!inp)return;const v=inp.value.trim();const m=v===s[1]||(i===2&&v.includes('জেভিয়ার্স'));if(m){inp.className='fib-blank ok';ok++;}else inp.className='fib-blank ng'});
+  const fb=document.getElementById('fib-fb');
+  if(ok===AAMI_SENTENCES.length){fb.innerHTML='🎉 সব ঠিক! +30 XP';fb.className='fb ok show';addXP(30);confetti();}
+  else{fb.innerHTML=`${ok}/${AAMI_SENTENCES.length} সঠিক — আবার চেষ্টা করো!`;fb.className='fb ng show';if(ok>0)addXP(ok*5);}
+  updateHUD();save();
+}
+
+/* ────── MATHS ────── */
+const MT_CH2=[{q:"What is the Indian place value system for a 7-digit number?",a:"Ones, Tens, Hundreds, Thousands, Ten Thousands, Lakhs, Ten Lakhs"},{q:"How do you find the Successor of a number?",a:"Add 1 to the number. E.g. Successor of 99,999 = 1,00,000"},{q:"How do you find the Predecessor of a number?",a:"Subtract 1 from the number. E.g. Predecessor of 5,00,000 = 4,99,999"},{q:"How do you compare two large numbers?",a:"Compare from the left-most digit. The first different digit determines which is larger."},{q:"What is the Expanded Form of 4,23,806?",a:"4,00,000 + 20,000 + 3,000 + 800 + 6"},{q:"1 Lakh = how many thousands?",a:"1 Lakh = 100 Thousands"}];
+const MT_CH2_QUIZ=[{q:"Successor of 99,999 is?",opts:["99,998","1,00,001","99,990","1,00,000"],ans:"1,00,000"},{q:"Place value of 5 in 5,432?",opts:["5","50","500","5,000"],ans:"5,000"},{q:"Digit in thousands place in 3,275?",opts:["2","7","5","3"],ans:"3"},{q:"Which is bigger: 1,234 or 1,243?",opts:["1,234","Both equal","Cannot say","1,243"],ans:"1,243"},{q:"4,23,806 — value of lakhs digit?",opts:["40,000","4,000","400","4,00,000"],ans:"4,00,000"},{q:"Predecessor of 5,00,000?",opts:["4,98,000","5,00,001","5,01,000","4,99,999"],ans:"4,99,999"},{q:"Largest 3-digit number?",opts:["100","999","1000","990"],ans:"999"}];
+const MT_CH3=[{q:"What is the Commutative Property of Addition?",a:"a + b = b + a (order of numbers can be changed without changing the sum)"},{q:"What is the Associative Property of Addition?",a:"(a+b)+c = a+(b+c) — any two numbers can be added first"},{q:"What is the Identity Property of Addition?",a:"a + 0 = a — adding zero does not change the number"},{q:"How do you add large numbers?",a:"Arrange same-place digits in columns. Add from right to left (ones first). Carry over when sum ≥ 10."}];
+const MT_CH3_QUIZ=[{q:"Which property says a + b = b + a?",opts:["Associative","Identity","Distributive","Commutative"],ans:"Commutative"},{q:"Which property says a + 0 = a?",opts:["Commutative","Distributive","Associative","Identity"],ans:"Identity"},{q:"23,456 + 45,678 = ?",opts:["68,134","70,134","69,234","69,134"],ans:"69,134"},{q:"663 + 277 = ?",opts:["930","950","960","940"],ans:"940"},{q:"20,000 + 12,000 = ?",opts:["30,000","22,000","42,000","32,000"],ans:"32,000"},{q:"1,74,396 + 27,584 + 68,207 = ?",opts:["2,60,187","2,71,087","2,80,187","2,70,187"],ans:"2,70,187"}];
+const MT_CH4=[{q:"What is the formula for subtraction?",a:"Minuend − Subtrahend = Difference"},{q:"How do you verify a subtraction answer?",a:"Difference + Subtrahend = Minuend"},{q:"When do you need to borrow in subtraction?",a:"When the top digit is smaller than the bottom digit, borrow 1 from the next higher place."}];
+const MT_CH4_QUIZ=[{q:"87,654 − 34,567 = ?",opts:["52,087","53,187","53,077","53,087"],ans:"53,087"},{q:"9,23,670 − 74,568 = ?",opts:["8,59,102","8,49,002","8,49,202","8,49,102"],ans:"8,49,102"},{q:"5,20,673 − 1,87,498 = ?",opts:["3,43,175","3,23,175","3,33,075","3,33,175"],ans:"3,33,175"},{q:"How to verify: 500 − 200 = 300?",opts:["300 × 200","300 − 200","300 + 200 = 500","200 − 300"],ans:"300 + 200 = 500"},{q:"7,89,865 − 2,99,999 = ?",opts:["4,99,866","4,89,966","4,99,966","4,89,866"],ans:"4,89,866"}];
+const MT_WORD=[{q:"Kusum plucked 1,356 marigolds and 789 roses. Total?",opts:["2,045","2,255","2,155","2,145"],ans:"2,145"},{q:"Rohit: 1,46,735, Raju: 2,85,936, Raheem: 2,94,638. Total coins?",opts:["7,17,309","7,27,209","7,37,309","7,27,309"],ans:"7,27,309"},{q:"Forest: 5,20,673 trees. Storm uprooted 1,87,498. Left?",opts:["3,43,175","3,23,175","3,33,075","3,33,175"],ans:"3,33,175"},{q:"Manish: 136, Sheila: 341, Tina: 445 books. Total?",opts:["912","932","942","922"],ans:"922"},{q:"Red: 1,87,530 + Blue: 88,000 + White: 4,62,935 marbles?",opts:["7,28,465","7,48,465","7,38,565","7,38,465"],ans:"7,38,465"},{q:"11,800 sums total. 8,961 wrong. How many right?",opts:["2,739","2,939","2,639","2,839"],ans:"2,839"},{q:"Amit drove 4,500 km then 3,365 km more. Total?",opts:["8,865","7,965","7,765","7,865"],ans:"7,865"},{q:"Jar: 9,23,670 cookies. 74,568 eaten. Left?",opts:["8,59,102","8,49,002","8,39,102","8,49,102"],ans:"8,49,102"}];
+function initMaths(){
+  renderFacts('mt-ch2-content',MT_CH2,'mtf2');buildQuiz(MT_CH2_QUIZ,'mt-ch2-quiz',15,'mt2');
+  renderFacts('mt-ch3-content',MT_CH3,'mtf3');buildQuiz(MT_CH3_QUIZ,'mt-ch3-quiz',15,'mt3');
+  renderFacts('mt-ch4-content',MT_CH4,'mtf4');buildQuiz(MT_CH4_QUIZ,'mt-ch4-quiz',15,'mt4');
+  loadMathsPractice(1,document.querySelector('#mt-practice .etab'));
+}
+function renderFacts(cid,facts,prefix){
+  const el=document.getElementById(cid);if(!el)return;
+  el.innerHTML=facts.map((f,i)=>`<div class="qa-item"><div class="qa-q">📌 ${f.q}</div><button class="rev-btn" onclick="toggleQA('${prefix}',${i})">Show Answer 👁️</button><div class="qa-ans" id="${prefix}-${i}">${f.a}</div></div>`).join('');
+}
+function loadMathsPractice(lvl,btn){
+  document.querySelectorAll('#mt-practice .etab').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');
+  const data=lvl===4?MT_WORD:lvl===3?MT_CH4_QUIZ.concat(MT_CH3_QUIZ):lvl===2?MT_CH2_QUIZ.concat(MT_CH3_QUIZ):MT_CH2_QUIZ.slice(0,5).concat(MT_CH3_QUIZ.slice(0,3));
+  buildQuiz(data,'mt-practice-quiz',20,'mt_l'+lvl);
+}
+
+/* ────── ENGLISH ────── */
+const EN_STORY=["Matilda was a brilliant child. By the age of one and a half her speech was perfect. She knew as many words as most grown-ups. By the time she was three, Matilda had taught herself to read by studying newspapers and magazines. At the age of four, she could read fast and well. So, she naturally became interested in books.","The only book in the household was something called Easy Cooking belonging to her mother. When she had read this from cover to cover and had learnt all the recipes by heart, she decided she wanted something more interesting.","So, she set out all by herself to walk to the public library in the village. When she arrived, she introduced herself to the librarian, Mrs Phelps.","\"Where are the children's books please?\" Matilda asked. \"They are over there on those lower shelves,\" Mrs Phelps told her. \"No, thank you,\" Matilda said. \"I am sure I can manage.\"","From then on, every afternoon, Matilda would walk to the library. When she had read every single children's book in the place, she started wandering round in search of something else.","\"Can I help you, Matilda?\" Mrs Phelps asked. \"I have finished all the children's books.\" Mrs Phelps was stunned. \"Exactly how old are you, Matilda?\" — \"Four years and three months.\"","\"Great Expectations,\" Matilda read, \"by Charles Dickens. I would love to try it.\" Within a week, Matilda had finished Great Expectations. \"Has Mr Dickens written any others?\"","The books transported her into new worlds and introduced her to amazing people who lived exciting lives. She travelled all over the world while sitting in her little room."];
+const EN_VOCAB=[{word:"wandering",def:"Walking slowly around a place without any clear direction."},{word:"fascination",def:"The state of being very interested in someone or something."},{word:"stunned",def:"Very surprised — so surprised you can hardly speak!"},{word:"watchful",def:"Paying very close attention to everything happening around you."},{word:"transported",def:"Carried from one place to another — books transported Matilda to new worlds!"}];
+const EN_VOCAB_QUIZ=[{q:'Which meaning fits "wandering"?',opts:["Reading very fast","Walking slowly without direction","Feeling very happy","Jumping over things"],ans:"Walking slowly without direction"},{q:'What does "fascination" mean?',opts:["Being angry","Feeling cold","Running fast","Deep interest and wonder"],ans:"Deep interest and wonder"},{q:'What does "stunned" mean?',opts:["Very happy","Very hungry","Very tired","Very surprised"],ans:"Very surprised"},{q:'What does "watchful" mean?',opts:["Sleeping deeply","Playing outside","Singing loudly","Paying close attention"],ans:"Paying close attention"},{q:'"The books transported her" — what does this mean?',opts:["The books were boring","The books fell down","The books carried her to new worlds","The books were heavy"],ans:"The books carried her to new worlds"}];
+const EN_BOOKS=[["Great Expectations","Charles Dickens"],["Oliver Twist","Charles Dickens"],["Nicholas Nickleby","Charles Dickens"],["Kim","Rudyard Kipling"],["The Invisible Man","H.G. Wells"],["The Old Man and the Sea","Ernest Hemingway"],["Animal Farm","George Orwell"],["The Grapes of Wrath","John Steinbeck"]];
+const EN_COMP_QUIZ=[{q:"How old was Matilda when she taught herself to read?",opts:["One and a half","Four","Two","Three"],ans:"Three"},{q:"What was the first book Matilda read at home?",opts:["Great Expectations","Animal Farm","The Secret Garden","Easy Cooking"],ans:"Easy Cooking"},{q:"Where did Matilda go to read books?",opts:["School","Park","Her bedroom","The public library"],ans:"The public library"},{q:"Which book did Matilda read first at the library?",opts:["Kim","Animal Farm","Oliver Twist","Great Expectations"],ans:"Great Expectations"},{q:"How did the books make Matilda feel?",opts:["Bored and sleepy","Scared and worried","Hungry and tired","Like she travelled to new worlds"],ans:"Like she travelled to new worlds"},{q:"Who was the librarian?",opts:["Miss Honey","Mrs Wormwood","Miss Trunchbull","Mrs Phelps"],ans:"Mrs Phelps"},{q:"Matilda taught herself to read by studying ___.",opts:["Storybooks","Textbooks","Cookbooks","Newspapers and magazines"],ans:"Newspapers and magazines"},{q:"Mrs Phelps watched Matilda with ___.",opts:["Anger","Boredom","Jealousy","Fascination"],ans:"Fascination"}];
+function initEnglish(){
+  const sc=document.getElementById('en-story-content');
+  if(sc)sc.innerHTML=EN_STORY.map((p,i)=>`<div class="story-para"><b style="color:var(--a1)">Para ${i+1}:</b> ${p}</div>`).join('');
+  initFC('en',EN_VOCAB.map(v=>({q:v.word,a:v.def})));
+  const vg=document.getElementById('en-voc-grid');
+  if(vg)vg.innerHTML=EN_VOCAB.map(v=>`<div class="voc-card"><div class="voc-word">📘 ${v.word}</div><div class="voc-def">${v.def}</div></div>`).join('');
+  buildQuiz(EN_VOCAB_QUIZ,'en-vocab-quiz',15,'en_vocab');
+  const bc=document.getElementById('en-books-content');
+  if(bc)bc.innerHTML='<div>'+EN_BOOKS.map(([tt,a])=>`<div class="book-pair"><div><div class="book-title">📖 ${tt}</div><div class="book-auth">by ${a}</div></div></div>`).join('')+'</div>';
+  buildQuiz(EN_COMP_QUIZ,'en-quiz-content',15,'en_comp');
+}
+
+/* ────── HISTORY ────── */
+const HS_TIMELINE=[{t:"2 million years ago",e:"Early Humans",d:"First humans appeared on Earth. Used stone tools, lived in caves.",icon:"🦴"},{t:"4,00,000 years ago",e:"Discovery of Fire",d:"Early humans learned to make and use fire — for warmth and protection.",icon:"🔥"},{t:"8,000 years ago",e:"Mesopotamia",d:"One of the earliest civilisations between rivers Tigris and Euphrates (present-day Iraq).",icon:"🏙️"},{t:"5,000 years ago",e:"First Writing",d:"People invented writing for the very first time — a huge leap for humanity!",icon:"✍️"},{t:"4,600 years ago",e:"Pyramids of Giza",d:"Magnificent Pyramids built in ancient Egypt as tombs for the Pharaohs.",icon:"🏛️"},{t:"3,500 years ago",e:"Shang Dynasty (China)",d:"One of the first great dynasties of China — known for bronze and early Chinese writing.",icon:"🐉"},{t:"2,000 years ago",e:"Ancient Rome",d:"Powerful Roman Empire ruled Europe, North Africa and West Asia.",icon:"⚔️"},{t:"500 years ago",e:"Magellan sails the World",d:"Ferdinand Magellan led the first expedition to sail completely around the globe.",icon:"🧭"},{t:"300 years ago",e:"Industrial Revolution",d:"Age of machines began. Steam engines, factories and railways changed the world.",icon:"⚙️"},{t:"1878 AD",e:"Edison's Light Bulb",d:"After 75 years of trying, Thomas Edison made a bulb that burns for 13 hours!",icon:"💡"},{t:"~100 years ago",e:"Wright Brothers — First Flight",d:"Orville and Wilbur Wright made the first powered aeroplane flight — just 12 seconds!",icon:"✈️"},{t:"~70 years ago",e:"Gandhiji & Freedom",d:"Mahatma Gandhi led India's non-violent freedom struggle. India independent 15 Aug 1947!",icon:"🕊️"},{t:"Now",e:"Modern Times",d:"Computers, smartphones and the internet — all built on lessons of history!",icon:"💻"}];
+const HS_WORDS=[{em:"📜",t:"History",d:"The study of events, people, objects and places of the past."},{em:"🔎",t:"Discovery",d:"Finding something new."},{em:"🧭",t:"Explorer",d:"Someone who goes in search of new places."},{em:"🏛️",t:"Ruins",d:"The remains of a building or city."},{em:"🕐",t:"Modern",d:"Belonging to recent times."},{em:"⚔️",t:"Rivalry",d:"Competition or conflict between two groups."},{em:"👑",t:"Mughal",d:"A powerful dynasty that ruled India for about 400 years. Babur was the first Mughal ruler."},{em:"🤝",t:"Trader",d:"A person who buys and sells goods. The British first came to India as traders."},{em:"📅",t:"BC",d:"Before Christ — events before the birth of Jesus Christ. BC numbers count backwards."},{em:"📅",t:"AD",d:"Anno Domini — events after the birth of Jesus Christ. AD numbers count forwards."},{em:"🏙️",t:"Civilisation",d:"An advanced human society with its own culture and laws."},{em:"🔬",t:"Scientist",d:"A person who studies science and tries to find out new things."}];
+const HS_FLASHCARDS=[{q:"What is History?",a:"The study of events, people, objects and places of the past."},{q:"Mesopotamia — how long ago and where?",a:"8,000 years ago — between rivers Tigris and Euphrates (present-day Iraq)."},{q:"How long did Edison's light bulb burn?",a:"13 hours — invented in 1878 AD."},{q:"What did Magellan do?",a:"First explorer to sail completely around the world — 500 years ago."},{q:"How long ago were the Pyramids of Giza built?",a:"4,600 years ago — as tombs for Egyptian Pharaohs."},{q:"How long was the Wright Brothers' first flight?",a:"Just 12 seconds — about 100 years ago."},{q:"What does BC stand for?",a:"Before Christ — events before the birth of Jesus. BC numbers count backwards."},{q:"What does AD stand for?",a:"Anno Domini — events after the birth of Jesus Christ. AD numbers count forwards."},{q:"Who was the first Mughal ruler?",a:"Babur — the Mughals ruled India for about 400 years."},{q:"Why did the British become powerful in India?",a:"They used the rivalry (competition) between Indian rulers to make themselves strong."},{q:"Where was the Shang Dynasty?",a:"China — 3,500 years ago. Known for bronze tools and early Chinese writing."},{q:"Why did Edison succeed at the light bulb?",a:"He learned from the mistakes of 75 years of earlier scientists."}];
+const HS_QUIZ=[{q:"Mesopotamia civilisation began how many years ago?",opts:["5,000","10,000","3,500","8,000"],ans:"8,000"},{q:"Where were the Pyramids of Giza built?",opts:["Greece","Rome","China","Egypt"],ans:"Egypt"},{q:"Magellan sailed around the world how many years ago?",opts:["300","70","100","500"],ans:"500"},{q:"How long did Edison's light bulb burn?",a:"13 hours",opts:["75 hours","50 hours","12 hours","13 hours"],ans:"13 hours"},{q:"Wright Brothers' first flight lasted how many seconds?",opts:["60","30","5","12"],ans:"12"},{q:"Who was the first Mughal ruler of India?",opts:["Akbar","Shah Jahan","Humayun","Babur"],ans:"Babur"},{q:"The British first came to India as ___.",opts:["Soldiers","Teachers","Doctors","Traders"],ans:"Traders"},{q:"When did India gain independence?",opts:["1948","1950","1942","1947"],ans:"1947"},{q:"What does AD stand for?",opts:["After Death","All Days","Ancient Days","Anno Domini"],ans:"Anno Domini"},{q:"When was the first writing invented?",opts:["8,000 years ago","4,600 years ago","3,500 years ago","5,000 years ago"],ans:"5,000 years ago"}];
+function initHistory(){
+  const tc=document.getElementById('hs-timeline-content');
+  if(tc)tc.innerHTML=HS_TIMELINE.map(e=>`<div class="tl-item"><div class="tl-time">${e.icon} ${e.t}</div><div class="tl-event">${e.e}</div><div class="tl-desc">${e.d}</div></div>`).join('');
+  const vg=document.getElementById('hs-voc-grid');
+  if(vg)vg.innerHTML=HS_WORDS.map(w=>`<div class="voc-card"><div class="voc-word">${w.em} ${w.t}</div><div class="voc-def">${w.d}</div></div>`).join('');
+  initFC('hs',HS_FLASHCARDS);buildQuiz(HS_QUIZ,'hs-quiz-content',15,'history');
+}
+
+/* ────── GEOGRAPHY ────── */
+const GEO_PLANETS=[{name:"Mercury",em:"🪨",n:1,rev:"88 days",rot:"59 days",sat:0,info:"Closest to Sun. Shortest orbit. No satellite, no atmosphere."},{name:"Venus",em:"🌡️",n:2,rev:"225 days",rot:"243 days",sat:0,info:"Hottest planet — thick atmosphere traps heat. Called Morning Star."},{name:"Earth",em:"💧",n:3,rev:"365 days",rot:"24 hrs",sat:1,info:"Only planet with life. Vast oceans → looks blue. Moon is its satellite."},{name:"Mars",em:"🔴",n:4,rev:"687 days",rot:"24.6 hrs",sat:2,info:"Red Planet — iron-rich rocks. 2 small satellites."},{name:"Jupiter",em:"👑",n:5,rev:"~12 years",rot:"10 hrs",sat:16,info:"Biggest planet — ~1000 Earths fit inside."},{name:"Saturn",em:"💍",n:6,rev:"~29 years",rot:"11 hrs",sat:33,info:"Rings of ice & dust. 33 satellites. 2nd biggest planet."},{name:"Uranus",em:"🌀",n:7,rev:"~84 years",rot:"17 hrs",sat:27,info:"Dark ring around it. 27 satellites. 7th from Sun."},{name:"Neptune",em:"🔭",n:8,rev:"~163 years",rot:"16 hrs",sat:13,info:"Farthest from Sun. Only visible through telescope. 13 satellites."}];
+const GEO_WORDS=[{em:"🌌",t:"Universe",d:"The whole of space including the sun, planets, satellites and stars."},{em:"✨",t:"Celestial Body",d:"A heavenly body that exists in space."},{em:"🌙",t:"Satellite",d:"A heavenly body moving around any planet."},{em:"🪐",t:"Planet",d:"A heavenly body moving in its orbit around the sun."},{em:"⭐",t:"Galaxy",d:"A large group of stars."},{em:"🌌",t:"Milky Way",d:"The galaxy of which the solar system is a part. Also called Akash Ganga."},{em:"🔄",t:"Rotation",d:"The spinning of a planet on its own axis, like a top."},{em:"🛸",t:"Revolution",d:"The movement of a planet around the sun in its fixed path (orbit)."},{em:"🛤️",t:"Orbit",d:"The fixed path in which a planet moves around the sun."},{em:"☄️",t:"Comet",d:"A heavenly body revolving round the sun with a head and tail. E.g. Halley's Comet (every 76 years)."}];
+const GEO_FLASHCARDS=[{q:"Mercury takes how many days for one revolution?",a:"88 days — shortest orbit, being closest to the Sun."},{q:"Why is Venus the hottest planet?",a:"Its thick atmosphere absorbs and traps the Sun's heat."},{q:"Earth — rotation vs revolution?",a:"Rotation = 24 hours (1 day). Revolution = 365 days (1 year)."},{q:"How many satellites does Mars have?",a:"2 small satellites. Called the Red Planet due to iron-rich rocks."},{q:"How many Earths fit inside Jupiter?",a:"About 1000 Earths — it's the biggest planet!"},{q:"How many satellites does Saturn have?",a:"33 satellites. Also has famous rings of ice and dust."},{q:"How many satellites does Uranus have?",a:"27 satellites. Has a dark ring. 7th planet from the Sun."},{q:"How many years does Neptune take for one revolution?",a:"About 163 years. Farthest planet — only visible through telescope."},{q:"Why is Pluto no longer a planet?",a:"It's extremely small — less than half the size of Mercury. Now a dwarf planet."},{q:"How often does Halley's Comet appear?",a:"Once every 76 years. Last seen in 1986."},{q:"What gases make up the Sun?",a:"Hydrogen and Helium."},{q:"What is the other name for the Milky Way?",a:"Akash Ganga. Our solar system is a tiny part of it."},{q:"Which two planets have NO satellites?",a:"Mercury and Venus — neither has any satellite."},{q:"Which planet has the most satellites (textbook)?",a:"Saturn with 33 satellites."},{q:"What does 'Sol' mean in Solar System?",a:"'Sol' is Greek for 'Sun God'."},{q:"Which planet takes the LONGEST for one revolution?",a:"Neptune — about 163 years."},{q:"How many years does Pluto take for one revolution?",a:"248 years. It has only 1 satellite."},{q:"Which planet has rings of ice and dust?",a:"Saturn — the most spectacular rings."},{q:"Which planet is 5th from the Sun?",a:"Jupiter: Mercury→Venus→Earth→Mars→Jupiter."},{q:"What are the three dwarf planets?",a:"Pluto, Ceres, and Eris."}];
+const GEO_QUIZ=[{q:"Mercury takes how many days for one revolution?",opts:["365 days","225 days","687 days","88 days"],ans:"88 days"},{q:"Which two planets have NO satellites?",opts:["Mercury & Mars","Mars & Jupiter","Venus & Earth","Mercury & Venus"],ans:"Mercury & Venus"},{q:"About how many Earths fit inside Jupiter?",opts:["100","500","2000","1000"],ans:"1000"},{q:"Which planet has the MAXIMUM satellites (textbook)?",opts:["Jupiter (16)","Uranus (27)","Neptune (13)","Saturn (33)"],ans:"Saturn (33)"},{q:"Halley's Comet was last seen in which year?",opts:["1976","2003","1999","1986"],ans:"1986"},{q:"Which planet is the SECOND biggest?",opts:["Neptune","Jupiter","Uranus","Saturn"],ans:"Saturn"},{q:"How many years does Uranus take for one revolution?",opts:["29 years","163 years","248 years","84 years"],ans:"84 years"},{q:"The word 'Sol' means:",opts:["Moon God","Sky God","Star God","Sun God"],ans:"Sun God"},{q:"Which planet takes the longest for one revolution?",opts:["Uranus","Saturn","Pluto","Neptune"],ans:"Neptune"},{q:"Mars takes how many days for one revolution?",opts:["365 days","88 days","225 days","687 days"],ans:"687 days"}];
+function initGeography(){
+  const pg=document.getElementById('geo-planet-grid');
+  if(pg)pg.innerHTML=GEO_PLANETS.map(p=>`<div class="pc"><div style="font-size:28px;margin-bottom:6px">${p.em}</div><div class="pc-name">${p.n}. ${p.name}</div><div class="pc-fact">🔄 Revolution: <b>${p.rev}</b></div><div class="pc-fact">⏱️ Rotation: <b>${p.rot}</b></div><div class="pc-fact">🌙 Satellites: <b>${p.sat}</b></div><div class="pc-fact" style="margin-top:6px;font-size:11px;color:var(--text2)">${p.info}</div></div>`).join('');
+  const vg=document.getElementById('geo-voc-grid');
+  if(vg)vg.innerHTML=GEO_WORDS.map(w=>`<div class="voc-card"><div class="voc-word">${w.em} ${w.t}</div><div class="voc-def">${w.d}</div></div>`).join('');
+  initFC('geo',GEO_FLASHCARDS);buildQuiz(GEO_QUIZ,'geo-quiz-content',15,'geography');
+}
+
+/* ════════ BADGES ════════ */
+const BADGES=[{id:'first',i:'🎯',n:'First Step',d:'Complete first quiz',c:()=>S.xp>0},{id:'xp100',i:'⭐',n:'XP Collector',d:'Earn 100 XP',c:()=>S.xp>=100},{id:'xp500',i:'🌟',n:'XP Star',d:'Earn 500 XP',c:()=>S.xp>=500},{id:'xp1000',i:'👑',n:'XP King',d:'Earn 1000 XP',c:()=>S.xp>=1000},{id:'streak5',i:'🔥',n:'On Fire',d:'5 correct in a row',c:()=>S.best>=5},{id:'streak10',i:'💥',n:'Super Streak',d:'10 correct in a row',c:()=>S.best>=10},{id:'lv3',i:'🏅',n:'Level 3',d:'Reach level 3',c:()=>S.level>=3},{id:'lv5',i:'🚀',n:'Maestro',d:'Reach level 5',c:()=>S.level>=5},{id:'ant100',i:'💎',n:'Word Champion',d:'100% in antonym quiz',c:()=>(S.scores['ant']||0)>=100},{id:'mt60',i:'🔢',n:'Maths Scholar',d:'60%+ in any maths quiz',c:()=>Math.max(S.scores['mt2']||0,S.scores['mt3']||0,S.scores['mt4']||0)>=60},{id:'en60',i:'📖',n:'Reader',d:'60%+ in English quiz',c:()=>Math.max(S.scores['en_vocab']||0,S.scores['en_comp']||0)>=60},{id:'geo80',i:'🌍',n:'Space Expert',d:'80%+ in Geography quiz',c:()=>(S.scores['geography']||0)>=80}];
+function checkBadges(){BADGES.forEach(b=>{if(!S.badges.includes(b.id)&&b.c()){S.badges.push(b.id);showBadgeToast(b);save()}})}
+function showBadgeToast(b){
+  const el=document.createElement('div');
+  el.style.cssText='position:fixed;bottom:22px;right:22px;background:linear-gradient(135deg,rgba(246,201,14,.97),rgba(255,112,67,.97));color:#000;padding:12px 20px;border-radius:16px;font-family:"Nunito",sans-serif;font-weight:800;font-size:.9rem;z-index:9999;box-shadow:0 6px 28px rgba(0,0,0,.4);animation:popIn .3s cubic-bezier(.34,1.56,.64,1)';
+  el.innerHTML=b.i+' Badge Earned! <b>'+b.n+'</b>';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),3000);
+}
+
+/* ════════ CONFETTI ════════ */
+const _cs=document.createElement('style');
+_cs.textContent='@keyframes cfall{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}';
+document.head.appendChild(_cs);
+function confetti(){
+  const cols=['#FFD600','#FF7043','#66BB6A','#4FC3F7','#AB47BC','#EF5350','#4ecdc4','#fd79a8'];
+  for(let i=0;i<35;i++){const el=document.createElement('div');const sz=7+Math.random()*7;
+    el.style.cssText=`position:fixed;left:${Math.random()*100}vw;top:-20px;width:${sz}px;height:${sz}px;background:${cols[Math.floor(Math.random()*cols.length)]};border-radius:${Math.random()>.5?'50%':'3px'};z-index:9999;pointer-events:none;animation:cfall ${1+Math.random()}s ease-in forwards;animation-delay:${Math.random()*.4}s`;
+    document.body.appendChild(el);setTimeout(()=>el.remove(),2000);}
+}
+
+/* ════════ UTILS ════════ */
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function escJ(s){return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'")}
+function escId(s){return s.replace(/[^\w]/g,'_')}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+/* ════════ INIT ════════ */
+updateHUD();checkBadges();
+</script>
+</body>
+</html>
