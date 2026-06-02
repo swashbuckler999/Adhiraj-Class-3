@@ -633,6 +633,10 @@ pointer-events:none;z-index:0;opacity:.5;transition:opacity .4s}
 
 </div><!-- /main -->
 <script>
+/* ════════ GLOBAL STATE VARS (declared first to avoid TDZ) ════════ */
+let _curSubj=null,_tp=false,_inited={};
+let CL='en';
+
 /* ════════ LANGUAGE ════════ */
 const LANG={
   en:{
@@ -668,7 +672,6 @@ const LANG={
     lvl_up:'🎉 স্তর বৃদ্ধি!',lvl_now:'তুমি এখন স্তর ',
   }
 };
-let CL='en';
 function t(k){return(LANG[CL][k]||LANG.en[k]||k)}
 function toggleLang(){setLang(CL==='en'?'bn':'en')}
 function setLang(l){
@@ -719,7 +722,6 @@ function showLevelUp(){
 
 /* ════════ THEME ════════ */
 const SUBJ_THEME={bengali:'space',maths:'maths',english:'english',history:'history',geography:'universe'};
-let _tp=false;
 function toggleTheme(){_tp=!_tp;document.getElementById('theme-panel').classList.toggle('show',_tp)}
 document.addEventListener('click',e=>{if(!e.target.closest('.ctrl-btn')&&!e.target.closest('.theme-panel')){_tp=false;document.getElementById('theme-panel').classList.remove('show')}});
 function setTheme(t2){
@@ -741,8 +743,6 @@ const SUBJ_NAVS={
 // Bengali nav always in Bengali
 const BN_NAVS=[['home','🏠 হোম'],['antonym','🔄 বিপরীত শব্দ'],['grammar','📖 ব্যাকরণ'],['essay','✍️ অনুচ্ছেদ'],['poem','🌸 কবিতা'],['aami','👦 আমি']];
 const SUBJ_LABEL={bengali:'📚',maths:'🔢',english:'📖',history:'🏛️',geography:'🌍'};
-let _curSubj=null;
-
 function openSubject(id){
   _curSubj=id;
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
@@ -831,7 +831,6 @@ function nextFC(id){FC[id].cur=(FC[id].cur+1)%FC[id].data.length;updateFC(id)}
 function prevFC(id){FC[id].cur=(FC[id].cur-1+FC[id].data.length)%FC[id].data.length;updateFC(id)}
 
 /* ════════ SUBJECT INIT ════════ */
-const _inited={};
 function initSubject(id){if(_inited[id])return;_inited[id]=true;
   if(id==='bengali')initBengali();if(id==='maths')initMaths();
   if(id==='english')initEnglish();if(id==='history')initHistory();
